@@ -1,0 +1,80 @@
+.galrow img{
+    height: 16rem;
+    width: 20rem;
+    margin: 20px 0px 10px 20px!important;
+    box-shadow: 1px 2px 5px 6px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 1px 2px 5px 6px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 2px 5px 6px rgba(0,0,0,0.75);
+  
+   
+}
+
+.galrow{
+  background-color: #FE0000 !important;
+  
+}
+.galrow h6{
+  color: #ffffff !important;
+}
+.gall{
+  color: #ff0000 !important;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: 800;
+  text-shadow: -1px 1px 2px rgba(255,255,255,0.6),-1px 1px 6px rgba(255,255,255,0.6),-1px 1px 2px rgb(255, 0, 136) !important;
+  
+}
+.galrow h2{
+  margin-top: 20px;
+  color: #fff;
+}
+.headwed{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: 800;
+  text-shadow: -2px 2px 2px rgba(0,0,0,0.6),-1px 1px 2px rgb(0, 0, 0);
+}
+.galsec{
+  background-color: #000000 !important;
+}
+.galsubb{
+  color: #f2ff00 !important;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 800;
+}
+.nt1{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: 600;
+  color: #fbff00 !important;
+}
+.ntot{
+  color:#000000 !important;
+}
+@media (max-width: 1024px) {
+   
+   .galrow img{
+    margin: 20px 5px !important;
+    width: 14rem !important;
+  }  
+  .galsec{
+    overflow-x: hidden !important;
+  }
+
+}
+@media (max-width: 768px) {
+  .galrow img{
+    margin: 20px 20px !important;
+  }  
+  .galsec{
+    overflow-x: hidden !important;
+  }
+}
+@media (max-width: 480px) {
+  .galrow img{
+    margin: 20px 70px !important;
+    width: 20rem !important;
+    overflow-x: hidden !important;
+  }  
+  .galsec{
+    overflow-x: hidden !important;
+  }
+
+}

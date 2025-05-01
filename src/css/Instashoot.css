@@ -1,0 +1,145 @@
+.formbook{
+    background-color: #FE0000 !important;
+    color: #ffffff !important;
+    border-radius: 5px !important;
+    border: none !important;
+    box-shadow: -1px 0px 12px 5px rgba(0,0,0,0.79);
+    -webkit-box-shadow: -1px 0px 12px 5px rgba(0,0,0,0.79);
+    -moz-box-shadow: -1px 0px 12px 5px rgba(0,0,0,0.79);
+    width: 550px !important;
+    padding-top: 5px !important;
+    margin-top: 15px !important;
+}
+.formbook input{
+    max-width: 1000px !important;
+    border-radius: 5px !important;
+    border-style: none !important;
+    outline: none !important;
+    padding: 2px 100px !important;
+    margin: 7px 80px !important;
+    color: #FE0000 !important;
+}
+.formbook input[type=date]{
+    width: 380px !important;
+}
+.formbook button{
+    color: #FE0000 !important;
+    background-color: #000000 !important;
+    border-radius: 5px !important;
+    border-style: none !important;
+    outline: none !important;
+    padding: 2px 100px !important;
+    margin: 10px 110px !important;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 50 !important;
+}
+.formbook button:hover{
+    color: #000000 !important;
+    background-color: #eaff00 !important;
+}
+.formbook textarea{
+    padding: 3px 100px !important;
+    margin: 10px 80px !important;
+    border-radius: 5px !important;
+    border-style: none !important;
+    outline: none !important;
+    width: 380px !important;
+}
+.formbook label{
+    margin-left: 80px !important;
+}
+@media (max-width: 1024px) {
+    .formbook{
+        width: 450px !important;
+        margin: 10px  0px !important;
+    }
+    .formbook input{
+        margin: 5px 30px !important;
+    }
+    .formbook textarea{
+        margin: 5px 30px !important;
+    }
+    .formbook button{
+        margin: 22px 50px !important;
+    }
+    .booksecwed{
+        overflow-x: hidden !important;
+    }
+ 
+}
+@media (max-width: 768px) {
+    .formbook{
+        width: 320px !important;
+        margin: 62px  0px !important;
+    }
+    .formbook input{
+        max-width: 1000px !important;
+        border-radius: 5px !important;
+        border-style: none !important;
+        outline: none !important;
+        padding: 2px 10px !important;
+        margin: 13px 60px !important;
+        color: #FE0000 !important;
+    }
+    .formbook input[type=date]{
+        width:200px !important;
+    }
+    .formbook button{
+        outline: none !important;
+        padding: 2px 0px !important;
+        margin: 10px 60px !important;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-weight: 50 !important;
+        width: 200px !important;
+    }
+    .formbook textarea{
+        padding: 3px 100px !important;
+        margin: 10px 60px !important;
+        width: 200px !important;
+    }
+    .formbook label{
+        margin-left: 60px !important;
+    }
+    .booksecwed{
+        overflow-x: hidden !important;
+    }
+ 
+}
+@media (max-width: 480px) {
+    .formbook{
+        width: 320px !important;
+        margin: 10px  50px !important;
+    }
+    .formbook input{
+        max-width: 1000px !important;
+        border-radius: 5px !important;
+        border-style: none !important;
+        outline: none !important;
+        padding: 2px 10px !important;
+        margin: 7px 60px !important;
+        color: #FE0000 !important;
+    }
+    .formbook input[type=date]{
+        width:200px !important;
+    }
+    .formbook button{
+        outline: none !important;
+        padding: 2px 0px !important;
+        margin: 10px 60px !important;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-weight: 50 !important;
+        width: 200px !important;
+    }
+    .formbook textarea{
+        padding: 3px 100px !important;
+        margin: 10px 60px !important;
+        width: 200px !important;
+    }
+    .formbook label{
+        margin-left: 60px !important;
+    }
+    .booksecwed{
+        overflow-x: hidden !important;
+    }
+ 
+}
