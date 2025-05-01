@@ -1,6 +1,5 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Index from './Home'
 import Navbar from './Navbar'
 import Party from './Party'
 import Prewedding from './Prewedding'
