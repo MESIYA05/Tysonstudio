@@ -1,91 +1,228 @@
-import React from 'react'
-import AOS from 'aos'
-import 'aos/dist/aos.css'
-import { useEffect,useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import emailjs from '@emailjs/browser';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faLink,faEnvelope,faPhone} from '@fortawesome/free-solid-svg-icons';
-import {faInstagram,faFacebook,faWhatsapp,} from '@fortawesome/free-brands-svg-icons';
+import Swal from 'sweetalert2';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope, faPhone, faLocationDot, faClock, faShieldHalved } from '@fortawesome/free-solid-svg-icons';
+import { faInstagram, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import '../css/Contact.css';
-
+import Footer from './Footer';
 
 const Contact = () => {
-    useEffect (() => {
-          AOS.init({})
-           },[])
+  useEffect(() => {
+    AOS.init({ duration: 800, once: true });
+  }, []);
 
-           const form = useRef();
+  const form = useRef();
+  const [isSending, setIsSending] = useState(false);
 
-           const sendEmail = (e) => {
-             e.preventDefault();
-         
-             emailjs
-               .sendForm('service_z64vw0i', 'template_m4nrvf6', form.current, {
-                 publicKey: 'J1ToocWjgXkzXFCmU',
-               })
-               .then(
-                 () => {
-                   console.log('SUCCESS!');
-                 },
-                 (error) => {
-                   console.log('FAILED...', error.text);
-                 },
-               );
-               e.target.reset()
-           };       
+  const sendEmail = (e) => {
+    e.preventDefault();
+    if (isSending) return;
+
+    setIsSending(true);
+
+    emailjs
+      .sendForm('service_z64vw0i', 'template_m4nrvf6', form.current, {
+        publicKey: 'J1ToocWjgXkzXFCmU',
+      })
+      .then(
+        () => {
+          console.log('SUCCESS!');
+          Swal.fire({
+            icon: 'success',
+            title: 'Message Sent Successfully!',
+            text: 'Thank you for contacting TYSON STUDIO. We’ll get back to you soon.',
+            confirmButtonText: 'OK',
+          });
+          form.current.reset();
+          setIsSending(false);
+        },
+        (error) => {
+          console.error('FAILED...', error.text);
+          Swal.fire({
+            icon: 'error',
+            title: 'Something Went Wrong',
+            text: "We couldn't send your message. Please try again.",
+            confirmButtonText: 'Try Again',
+          });
+          setIsSending(false);
+        }
+      );
+  };
+
   return (
-    <>
-      <section className='consec'>
-      <div className="container-fluid">
-          <h1 className='text-center hedtext headwed' data-aos="fade-down" data-aos-duration="1000">CONTACT  <span className='uniqhead'>US</span></h1>
-          <p className='text-center wedsu weds' data-aos="fade-up" data-aos-duration="1000">Quickly let us know how can we help you.</p>
-          <div className="row rows1">
-            <div className="col-lg-6 col-md-6 col-12 con1" data-aos="fade-right" data-aos-duration="1000">
-             <h3>CUSTOMER CARE :</h3>
-              <a href="tel:9361726533"><FontAwesomeIcon icon={faPhone} style={{color:'#f2ff00 ',fontSize:'25px'}} /> : &nbsp; +91 9361726533</a> <br /> <br />
-              <a href="https://www.instagram.com/dark_shadow_boy_05/profilecard/?igsh=dGpidjVvcHkyYzFh"><FontAwesomeIcon icon={faInstagram} style={{color:'#f2ff00 ',fontSize:'25px'}} /> :  &nbsp; Instagram</a> <br /> <br />
-              <a href="mailto:mesiya2002samy@gmail.com" ><FontAwesomeIcon icon={faEnvelope} style={{color:'#f2ff00 ',fontSize:'25px'}} /> : &nbsp; mesiya2002samy@gmail.com</a> <br /> <br />
-              <a href="http://wa.me/+919361726533"><FontAwesomeIcon icon={faWhatsapp} style={{color:'#f2ff00',fontSize:'25px'}} /> : &nbsp; Send Message</a> 
-            </div>
-            <div className="col-lg-6 col-md-6 col-12 con2" data-aos="fade-left" data-aos-duration="1000">
-              <form  ref={form} onSubmit={sendEmail} className='form1'>
-              <label htmlFor="name">Name : </label><br />
-              <input type="text" name='name' placeholder='    enter name' minLength={3} maxLength={20}required /> <br />
-              <label htmlFor="email">Email : </label><br />
-              <input type="email" name='email' placeholder='   enter email' required /> <br />
-              <label htmlFor="mobile">Mobile : </label><br />
-              <input type="text"   name='mobile' placeholder='   enter mobile number'minLength={12} maxLength={12}required/> <br />
-              <label htmlFor="message">Your Message : </label><br />
-              <textarea type="text" name='message'  placeholder='   enter ur message' minLength={15} required/> <br />
-             
-              <input type="submit" value="Send Message"/>
-              </form>
-               </div>
-            </div>
-
-            <div className="row">
-                             
-                                   <div className="col-lg-12 col-md-12 col-12 wedfooter" data-aos="fade-up" data-aos-duration="1000">
-                                    <h1 className="text-center wedfosp wedfo"><span>TYSON</span> STUDIO</h1>
-                                    <h5 className="text-center foh5">Stay Connected With Our Photographers</h5><br/>
-                                    <p className="wedhed text-center">Ldrago has made Professional Photograpy service easy to <br/>  access.  Doesn't matter if you want 
-                                                  multiple shoots at a time or <br/> multiple locations at a time. We're Present across 135 international <br/> destinations with multiple teams at every location.
-                                    </p>
-                                    <h5 className="text-center wedsech5">Follow Us</h5>
-                                    <h4 className="text-center wedico"><a href="https://www.facebook.com/mesiya.mesiya.927?mibextid=ZbWKwL"><FontAwesomeIcon icon={faFacebook} style={{color:'#fa0505'}} /></a>&nbsp;&nbsp;&nbsp;
-                                             <a href="https://www.instagram.com/dark_shadow_boy_05/profilecard/?igsh=dGpidjVvcHkyYzFh"><FontAwesomeIcon icon={faInstagram} style={{color:'#fa0505'}} /></a>&nbsp;&nbsp;&nbsp;
-                                             <a href="mailto:mesiya2002samy@gmail.com" ><FontAwesomeIcon icon={faEnvelope} style={{color:'#fa0505'}} /></a>&nbsp;&nbsp;&nbsp;
-                                             <a href="http://wa.me/+919361726533"><FontAwesomeIcon icon={faWhatsapp} style={{color:'#fa0505'}} /></a>&nbsp;&nbsp;&nbsp;
-                                             <a href="https://mesiya-portfolio.netlify.app/"><FontAwesomeIcon icon={faLink} style={{color:'#fa0505'}} /></a></h4><br/>
-                                             <h6  className="text-center fosp wedcopy">Copyright © 2025 <span>TYSON</span> STUDIO | All rights reserved !</h6>
-                                   </div>
-                             
-            </div>
-
-          </div>
+    <div className="contact-page">
+      {/* Hero Banner */}
+      <section className="service-hero-banner">
+        <div className="container">
+          <span className="label" data-aos="fade-down">GET IN TOUCH</span>
+          <h1 className="service-hero-title" data-aos="fade-up">
+            CONTACT TYSON STUDIO <span className="text-accent">.</span>
+          </h1>
+          <p className="service-hero-sub" data-aos="fade-up" data-aos-delay="100">
+            Have a project in mind or want to book an exclusive shoot? We would love to hear from you.
+          </p>
+        </div>
       </section>
-    </>
-  )
-}
 
-export default Contact
+      {/* Main Contact Section */}
+      <section className="contact-main-section">
+        <div className="container">
+          <div className="contact-layout-grid">
+            {/* Left Column: Direct Studio Information */}
+            <div className="contact-info-card" data-aos="fade-right">
+              <div>
+                <span className="label">STUDIO CONCIERGE</span>
+                <h2 className="contact-info-title">Let’s Start a Conversation</h2>
+                <p className="body-md">
+                  Our creative producers and studio photographers are available for destination bookings, studio inquiries, and bespoke package consultations.
+                </p>
+
+                <div className="contact-details-list">
+                  <div className="contact-detail-item">
+                    <div className="contact-icon-box">
+                      <FontAwesomeIcon icon={faPhone} />
+                    </div>
+                    <div>
+                      <span className="contact-detail-label">Customer Care / Phone</span>
+                      <a href="tel:9361726533" className="contact-detail-link">+91 9361726533</a>
+                    </div>
+                  </div>
+
+                  <div className="contact-detail-item">
+                    <div className="contact-icon-box">
+                      <FontAwesomeIcon icon={faEnvelope} />
+                    </div>
+                    <div>
+                      <span className="contact-detail-label">Direct Email</span>
+                      <a href="mailto:mesiya.career@gmail.com" className="contact-detail-link">mesiya.career@gmail.com</a>
+                    </div>
+                  </div>
+
+                  <div className="contact-detail-item">
+                    <div className="contact-icon-box">
+                      <FontAwesomeIcon icon={faWhatsapp} />
+                    </div>
+                    <div>
+                      <span className="contact-detail-label">WhatsApp Instant Concierge</span>
+                      <a href="http://wa.me/+919361726533" target="_blank" rel="noopener noreferrer" className="contact-detail-link">Chat on WhatsApp</a>
+                    </div>
+                  </div>
+
+                  <div className="contact-detail-item">
+                    <div className="contact-icon-box">
+                      <FontAwesomeIcon icon={faInstagram} />
+                    </div>
+                    <div>
+                      <span className="contact-detail-label">Instagram Portfolio</span>
+                      <a href="https://www.instagram.com/darkness_shadow_boy_05" target="_blank" rel="noopener noreferrer" className="contact-detail-link">@tyson_studio</a>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="booking-benefits-box" style={{ marginBottom: '1.5rem' }}>
+                  <span className="booking-benefits-title">
+                    <FontAwesomeIcon icon={faShieldHalved} style={{ color: 'var(--accent)', marginRight: '6px' }} />
+                    Direct Concierge Guarantee
+                  </span>
+                  <p className="booking-benefits-desc">
+                    • Inquiries answered within 2 to 4 business hours.<br/>
+                    • Free 1-on-1 creative consultation & shoot moodboard planning.
+                  </p>
+                </div>
+              </div>
+
+              <div className="contact-meta-box">
+                <div className="contact-meta-row">
+                  <FontAwesomeIcon icon={faClock} className="text-accent" />
+                  <span>Studio Hours: Monday – Sunday (9:00 AM – 9:00 PM IST)</span>
+                </div>
+                <div className="contact-meta-row mt-sm">
+                  <FontAwesomeIcon icon={faLocationDot} className="text-accent" />
+                  <span>Operating across 140+ cities & 28+ international destinations</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Luxury Message Form */}
+            <div className="contact-form-card" data-aos="fade-left">
+              <div>
+                <h2 className="contact-form-title">Send Us an Enquiry</h2>
+                <p className="contact-form-subtitle">Fill out the form below and we will respond within 24 hours.</p>
+
+                <form ref={form} onSubmit={sendEmail} className="ts-contact-form">
+                  <div className="form-group">
+                    <label htmlFor="name" className="form-label">Your Name *</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      placeholder="Enter your full name"
+                      minLength={3}
+                      maxLength={50}
+                      className="form-input"
+                      required
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="email" className="form-label">Email Address *</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      placeholder="name@example.com"
+                      className="form-input"
+                      required
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="mobile" className="form-label">Mobile Number *</label>
+                    <input
+                      type="tel"
+                      id="mobile"
+                      name="mobile"
+                      placeholder="e.g. +91 9361726533"
+                      minLength={10}
+                      maxLength={15}
+                      className="form-input"
+                      required
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="message" className="form-label">Your Message *</label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      placeholder="Tell us about your event dates, shoot type, or any questions you have..."
+                      minLength={10}
+                      className="form-input"
+                      required
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={isSending}
+                    className={`btn btn-primary contact-submit-btn ${isSending ? 'btn-loading' : ''}`}
+                  >
+                    {isSending ? 'Sending Message...' : 'Send Enquiry →'}
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <Footer />
+    </div>
+  );
+};
+
+export default Contact;

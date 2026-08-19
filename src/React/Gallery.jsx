@@ -1,11 +1,10 @@
-import React from 'react'
-import AOS from 'aos'
-import 'aos/dist/aos.css'
-import { useEffect } from 'react';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faLink,faEnvelope} from '@fortawesome/free-solid-svg-icons';
-import {faInstagram,faFacebook,faWhatsapp} from '@fortawesome/free-brands-svg-icons';
+import React, { useState, useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import '../css/Gallery.css';
+import Footer from './Footer';
+
+// Asset imports
 import kids9 from '../ASSETS/kids/kids9.png';
 import kids10 from '../ASSETS/kids/kids10.png';
 import kids11 from '../ASSETS/kids/kids11.png';
@@ -26,10 +25,10 @@ import vacation6 from '../ASSETS/vacation/vacation6.png';
 import vacation7 from '../ASSETS/vacation/vacation7.png';
 import vacation8 from '../ASSETS/vacation/vacation8.png';
 
-import  party3 from '../ASSETS/party/party3.png';
-import  party4 from '../ASSETS/party/party4.png';
-import  party5 from '../ASSETS/party/party5.png';
-import  party6 from '../ASSETS/party/party6.png';
+import party3 from '../ASSETS/party/party3.png';
+import party4 from '../ASSETS/party/party4.png';
+import party5 from '../ASSETS/party/party5.png';
+import party6 from '../ASSETS/party/party6.png';
 
 import Prewedding2 from '../ASSETS/pre wedding/prewedding2.png';
 import Prewedding3 from '../ASSETS/pre wedding/prewedding3.png';
@@ -54,172 +53,160 @@ import gallery15 from '../ASSETS/gallery/gallery15.png';
 import gallery16 from '../ASSETS/gallery/gallery16.png';
 
 const Gallery = () => {
-    useEffect (() => {
-          AOS.init({})
-           },[])
+  useEffect(() => {
+    AOS.init({ duration: 800, once: true });
+  }, []);
+
+  const [activeCategory, setActiveCategory] = useState('ALL');
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const categories = [
+    { id: 'ALL', label: 'All Projects' },
+    { id: 'WEDDINGS', label: 'Weddings' },
+    { id: 'PREWEDDING', label: 'Pre Weddings' },
+    { id: 'MATERNITY', label: 'Maternity' },
+    { id: 'KIDS', label: 'Kids & Baby' },
+    { id: 'PARTY', label: 'Parties' },
+    { id: 'VACATION', label: 'Vacation' },
+  ];
+
+  const galleryItems = [
+    { id: 1, src: gallery1, title: 'Editorial Noir', category: 'WEDDINGS', year: '2026', size: 'large' },
+    { id: 2, src: gallery2, title: 'Sunkissed Harmony', category: 'PREWEDDING', year: '2026', size: 'tall' },
+    { id: 3, src: gallery3, title: 'Maternal Grace', category: 'MATERNITY', year: '2025', size: 'standard' },
+    { id: 4, src: gallery4, title: 'City Lights Vows', category: 'WEDDINGS', year: '2026', size: 'standard' },
+    { id: 5, src: gallery5, title: 'Golden Hour Voyage', category: 'VACATION', year: '2025', size: 'tall' },
+    { id: 6, src: wedding2, title: 'Heritage Grandeur', category: 'WEDDINGS', year: '2026', size: 'large' },
+    { id: 7, src: wedding3, title: 'The Royal Walk', category: 'WEDDINGS', year: '2026', size: 'standard' },
+    { id: 8, src: Prewedding5, title: 'Coastal Serenade', category: 'PREWEDDING', year: '2025', size: 'standard' },
+    { id: 9, src: party4, title: 'Neon Midnight', category: 'PARTY', year: '2026', size: 'tall' },
+    { id: 10, src: kids11, title: 'Whimsical Garden', category: 'KIDS', year: '2026', size: 'standard' },
+    { id: 11, src: maternity5, title: 'Gentle Dawn', category: 'MATERNITY', year: '2025', size: 'large' },
+    { id: 12, src: vacation6, title: 'Alpine Breeze', category: 'VACATION', year: '2025', size: 'standard' },
+    { id: 13, src: wedding4, title: 'Sacred Threads', category: 'WEDDINGS', year: '2026', size: 'tall' },
+    { id: 14, src: wedding5, title: 'Starlight Romance', category: 'WEDDINGS', year: '2026', size: 'standard' },
+    { id: 15, src: party3, title: 'Golden Champagne', category: 'PARTY', year: '2025', size: 'standard' },
+    { id: 16, src: party5, title: 'Confetti Dreams', category: 'PARTY', year: '2026', size: 'large' },
+    { id: 17, src: vacation8, title: 'Santorini Blue', category: 'VACATION', year: '2025', size: 'standard' },
+    { id: 18, src: maternity7, title: 'Ethereal Velvet', category: 'MATERNITY', year: '2026', size: 'tall' },
+    { id: 19, src: party6, title: 'Late Night Rhythm', category: 'PARTY', year: '2026', size: 'standard' },
+    { id: 20, src: vacation5, title: 'Tropical Horizon', category: 'VACATION', year: '2025', size: 'large' },
+    { id: 21, src: vacation7, title: 'Desert Mirage', category: 'VACATION', year: '2025', size: 'standard' },
+    { id: 22, src: kids9, title: 'Little Wonder', category: 'KIDS', year: '2026', size: 'tall' },
+    { id: 23, src: kids10, title: 'Giggles & Joy', category: 'KIDS', year: '2026', size: 'standard' },
+    { id: 24, src: Prewedding3, title: 'Whispering Pines', category: 'PREWEDDING', year: '2025', size: 'standard' },
+    { id: 25, src: kids12, title: 'Fairytale Dreams', category: 'KIDS', year: '2026', size: 'large' },
+    { id: 26, src: Prewedding2, title: 'The Lake Story', category: 'PREWEDDING', year: '2025', size: 'standard' },
+    { id: 27, src: Prewedding4, title: 'Velvet Sunset', category: 'PREWEDDING', year: '2026', size: 'tall' },
+    { id: 28, src: maternity6, title: 'Bloom of Life', category: 'MATERNITY', year: '2026', size: 'standard' },
+    { id: 29, src: maternity4, title: 'Silken Whisper', category: 'MATERNITY', year: '2025', size: 'standard' },
+    { id: 30, src: gallery6, title: 'Timeless Silhouette', category: 'WEDDINGS', year: '2026', size: 'large' },
+    { id: 31, src: gallery7, title: 'Pure Glee', category: 'KIDS', year: '2026', size: 'standard' },
+    { id: 32, src: gallery8, title: 'Baby Bliss', category: 'KIDS', year: '2025', size: 'tall' },
+    { id: 33, src: gallery9, title: 'Cocktail Gala', category: 'PARTY', year: '2026', size: 'standard' },
+    { id: 34, src: gallery10, title: 'Azure Escape', category: 'VACATION', year: '2025', size: 'standard' },
+    { id: 35, src: gallery11, title: 'Eternal Ring', category: 'WEDDINGS', year: '2026', size: 'large' },
+    { id: 36, src: gallery12, title: 'The Bridal Glance', category: 'WEDDINGS', year: '2026', size: 'standard' },
+    { id: 37, src: gallery13, title: 'Lovers Bridge', category: 'PREWEDDING', year: '2025', size: 'tall' },
+    { id: 38, src: gallery14, title: 'Studio Classic', category: 'MATERNITY', year: '2026', size: 'standard' },
+    { id: 39, src: gallery15, title: 'Nightfall Soiree', category: 'PARTY', year: '2026', size: 'standard' },
+    { id: 40, src: gallery16, title: 'Wanderlust Vista', category: 'VACATION', year: '2025', size: 'large' },
+  ];
+
+  const filteredItems = activeCategory === 'ALL'
+    ? galleryItems
+    : galleryItems.filter(item => item.category === activeCategory);
+
   return (
-    <>
-      <section className='galsec'>
-        <div className='container-fluid'>
-          <h1 className='text-center headwed gall'data-aos="fade-down" data-aos-duration="1000"> GALLERY</h1>
-        
-           
-                  <div className='row galrow'>
-                     <h2 className='text-center galsubb' data-aos="fade-right" data-aos-duration="1000">Ideas For Photoshoot</h2>
-                     <h6 className='text-center' data-aos="fade-left" data-aos-duration="1000">Some ideas to inspire you, see how we have shot these high quality pictures.</h6>
-                    
-                    <div className="col-lg-3 col-md-6 col-12 galdi"data-aos="fade-down" data-aos-duration="1000">
-                    <img src={gallery1} alt="wed1" />
-                    </div>
-                    <div className="col-lg-3 col-md-6 col-12 galdi"data-aos="fade-left" data-aos-duration="1000">
-                    <img src={gallery2} alt="wed1" />
-                    </div>
-                    <div className="col-lg-3 col-md-6 col-12 galdi"data-aos="fade-right" data-aos-duration="1000">
-                    <img src={gallery3} alt="wed1" />
-                    </div>
-                    <div className="col-lg-3 col-md-6 col-12 galdi" data-aos="fade-left" data-aos-duration="1000">
-                    <img src={gallery4} alt="wed1" />
-                    </div>
-                    <div className="col-lg-3 col-md-6 col-12 galdi"data-aos="fade-right" data-aos-duration="1000">
-                    <img src={gallery5} alt="wed1" />
-                    </div>
-                    <div className="col-lg-3 col-md-6 col-12 galdi"data-aos="fade-left" data-aos-duration="1000">
-                    <img src={wedding2} alt="wed1" />
-                    </div>
-                    <div className="col-lg-3 col-md-6 col-12 galdi"data-aos="fade-right" data-aos-duration="1000">
-                    <img src={wedding3} alt="wed1" />
-                    </div>
-                    <div className="col-lg-3 col-md-6 col-12 galdi"data-aos="fade-left" data-aos-duration="1000">
-                    <img src={Prewedding5} alt="wed1" />
-                    </div>
-                    <div className="col-lg-3 col-md-6 col-12 galdi"data-aos="fade-right" data-aos-duration="1000">
-                    <img src={party4} alt="wed1" />
-                    </div>
-                    <div className="col-lg-3 col-md-6 col-12 galdi"data-aos="fade-left" data-aos-duration="1000">
-                    <img src={kids11} alt="wed1" />
-                    </div>
-                    <div className="col-lg-3 col-md-6 col-12 galdi"data-aos="fade-right" data-aos-duration="1000">
-                    <img src={maternity5} alt="wed1" />
-                    </div>
-                    <div className="col-lg-3 col-md-6 col-12 galdi"data-aos="fade-left" data-aos-duration="1000">
-                    <img src={vacation6} alt="wed1" />
-                    </div>
-                    <div className="col-lg-3 col-md-6 col-12 galdi"data-aos="fade-right" data-aos-duration="1000">
-                    <img src={wedding4} alt="wed1" />
-                    </div>
-                    <div className="col-lg-3 col-md-6 col-12 galdi"data-aos="fade-left" data-aos-duration="1000">
-                    <img src={wedding5} alt="wed1" />
-                    </div>
-                    <div className="col-lg-3 col-md-6 col-12 galdi"data-aos="fade-right" data-aos-duration="1000">
-                    <img src={party3} alt="wed1" />
-                    </div>
-                    <div className="col-lg-3 col-md-6 col-12 galdi"data-aos="fade-left" data-aos-duration="1000">
-                    <img src={party5} alt="wed1" />
-                    </div>
-                    <div className="col-lg-3 col-md-6 col-12 galdi"data-aos="fade-right" data-aos-duration="1000">
-                    <img src={vacation8} alt="wed1" />
-                    </div>
-                    <div className="col-lg-3 col-md-6 col-12 galdi"data-aos="fade-left" data-aos-duration="1000">
-                    <img src={maternity7} alt="wed1" />
-                    </div>
-                    <div className="col-lg-3 col-md-6 col-12 galdi"data-aos="fade-right" data-aos-duration="1000">
-                    <img src={party6} alt="wed1" />
-                    </div>
-                    <div className="col-lg-3 col-md-6 col-12 galdi"data-aos="fade-left" data-aos-duration="1000">
-                    <img src={vacation5} alt="wed1" />
-                    </div>
-                    <div className="col-lg-3 col-md-6 col-12 galdi"data-aos="fade-right" data-aos-duration="1000">
-                    <img src={vacation7} alt="wed1" />
-                    </div>
-                    <div className="col-lg-3 col-md-6 col-12 galdi"data-aos="fade-left" data-aos-duration="1000">
-                    <img src={kids9} alt="wed1" />
-                    </div>
-                    <div className="col-lg-3 col-md-6 col-12 galdi"data-aos="fade-right" data-aos-duration="1000">
-                    <img src={kids10} alt="wed1" />
-                    </div>
-                    <div className="col-lg-3 col-md-6 col-12 galdi"data-aos="fade-left" data-aos-duration="1000">
-                    <img src={Prewedding3} alt="wed1" />
-                    </div>
-                    <div className="col-lg-3 col-md-6 col-12 galdi"data-aos="fade-right" data-aos-duration="1000">
-                    <img src={kids12} alt="wed1" />
-                    </div>
-                    <div className="col-lg-3 col-md-6 col-12 galdi"data-aos="fade-left" data-aos-duration="1000">
-                    <img src={Prewedding2} alt="wed1" />
-                    </div>
-                    <div className="col-lg-3 col-md-6 col-12 galdi"data-aos="fade-right" data-aos-duration="1000">
-                    <img src={Prewedding4} alt="wed1" />
-                    </div>
-                    <div className="col-lg-3 col-md-6 col-12 galdi"data-aos="fade-left" data-aos-duration="1000">
-                    <img src={maternity6} alt="wed1" />
-                    </div>
-                    <div className="col-lg-3 col-md-6 col-12 galdi"data-aos="fade-right" data-aos-duration="1000">
-                    <img src={maternity4} alt="wed1" />
-                    </div>
-                    <div className="col-lg-3 col-md-6 col-12 galdi"data-aos="fade-left" data-aos-duration="1000">
-                    <img src={gallery6} alt="wed1" />
-                    </div>
-                    <div className="col-lg-3 col-md-6 col-12 galdi"data-aos="fade-right" data-aos-duration="1000">
-                    <img src={gallery7} alt="wed1" />
-                    </div>
-                    <div className="col-lg-3 col-md-6 col-12 galdi"data-aos="fade-left" data-aos-duration="1000">
-                    <img src={gallery8} alt="wed1" />
-                    </div>
-                    <div className="col-lg-3 col-md-6 col-12 galdi"data-aos="fade-right" data-aos-duration="1000">
-                    <img src={gallery9} alt="wed1" />
-                    </div>
-                    <div className="col-lg-3 col-md-6 col-12 galdi"data-aos="fade-left" data-aos-duration="1000">
-                    <img src={gallery10} alt="wed1" />
-                    </div>
-                    <div className="col-lg-3 col-md-6 col-12 galdi"data-aos="fade-right" data-aos-duration="1000">
-                    <img src={gallery11} alt="wed1" />
-                    </div>
-                    <div className="col-lg-3 col-md-6 col-12 galdi"data-aos="fade-left" data-aos-duration="1000">
-                    <img src={gallery12} alt="wed1" />
-                    </div>
-                    <div className="col-lg-3 col-md-6 col-12 galdi"data-aos="fade-right" data-aos-duration="1000">
-                    <img src={gallery13} alt="wed1" />
-                    </div>
-                    <div className="col-lg-3 col-md-6 col-12 galdi"data-aos="fade-left" data-aos-duration="1000">
-                    <img src={gallery14} alt="wed1" />
-                    </div>
-                    <div className="col-lg-3 col-md-6 col-12 galdi"data-aos="fade-right" data-aos-duration="1000">
-                    <img src={gallery15} alt="wed1" />
-                    </div>
-                    <div className="col-lg-3 col-md-6 col-12 galdi"data-aos="fade-left" data-aos-duration="1000">
-                    <img src={gallery16} alt="wed1" />
-                    </div>
-                    
-                    <h2 className='nt1'data-aos="fade-down" data-aos-duration="1000"> * Note  :</h2>
-                    <h6 className='ntot' data-aos="fade-left" data-aos-duration="1000">All images are protected by Copyright Act and licensed
-                      to respective owners of the images, coping and sharing without consent and permission is strictly prohibited.</h6>
-          
-                    </div>
+    <div className="gallery-page">
+      {/* Hero Banner */}
+      <section className="service-hero-banner">
+        <div className="container">
+          <span className="label" data-aos="fade-down">CURATED PORTFOLIO</span>
+          <h1 className="service-hero-title" data-aos="fade-up">
+            THE GALLERY <span className="text-accent">.</span>
+          </h1>
+          <p className="service-hero-sub" data-aos="fade-up" data-aos-delay="100">
+            A visual anthology of unforgettable moments, cinematic light, and emotive editorial storytelling.
+          </p>
+        </div>
+      </section>
 
-
-
-                   <div className="row">
-                             
-                    <div className="col-lg-12 col-md-12 col-12 wedfooter" data-aos="fade-up" data-aos-duration="1000">
-                      <h1 className="text-center wedfosp wedfo"><span>TYSON</span> STUDIO</h1>
-                      <h5 className="text-center foh5">Stay Connected With Our Photographers</h5><br/>
-                      <p className="wedhed text-center">Ldrago has made Professional Photograpy service easy to <br/>  access.  Doesn't matter if you want 
-                                    multiple shoots at a time or <br/> multiple locations at a time. We're Present across 135 international <br/> destinations with multiple teams at every location.
-                      </p>
-                      <h5 className="text-center wedsech5">Follow Us</h5>
-                      <h4 className="text-center wedico"><a href="https://www.facebook.com/mesiya.mesiya.927?mibextid=ZbWKwL"><FontAwesomeIcon icon={faFacebook} style={{color:'#fa0505'}} /></a>&nbsp;&nbsp;&nbsp;
-                              <a href="https://www.instagram.com/dark_shadow_boy_05/profilecard/?igsh=dGpidjVvcHkyYzFh"><FontAwesomeIcon icon={faInstagram} style={{color:'#fa0505'}} /></a>&nbsp;&nbsp;&nbsp;
-                              <a href="mailto:mesiya2002samy@gmail.com" ><FontAwesomeIcon icon={faEnvelope} style={{color:'#fa0505'}} /></a>&nbsp;&nbsp;&nbsp;
-                              <a href="http://wa.me/+919361726533"><FontAwesomeIcon icon={faWhatsapp} style={{color:'#fa0505'}} /></a>&nbsp;&nbsp;&nbsp;
-                              <a href="https://mesiya-portfolio.netlify.app/"><FontAwesomeIcon icon={faLink} style={{color:'#fa0505'}} /></a></h4><br/>
-                              <h6  className="text-center fosp wedcopy">Copyright © 2025 <span>TYSON</span> STUDIO | All rights reserved !</h6>
-                    </div>
-                             
-                    </div>
-
+      {/* Main Gallery Section */}
+      <section className="gallery-main-section">
+        <div className="container">
+          {/* Filter Tabs */}
+          <div className="gallery-filter-tabs" data-aos="fade-up">
+            {categories.map((cat) => (
+              <button
+                key={cat.id}
+                className={`gallery-filter-btn ${activeCategory === cat.id ? 'active' : ''}`}
+                onClick={() => setActiveCategory(cat.id)}
+              >
+                {cat.label}
+              </button>
+            ))}
           </div>
-      </section>     
-    </>
-  )
-}
 
-export default Gallery
+          {/* Masonry / Editorial Image Grid */}
+          <div className="gallery-masonry-grid">
+            {filteredItems.map((item, idx) => (
+              <div
+                key={item.id}
+                className={`gallery-card-item size-${item.size}`}
+                onClick={() => setSelectedImage(item)}
+                data-aos="fade-up"
+                data-aos-delay={(idx % 6) * 70}
+              >
+                <div className="gallery-card-img-wrap">
+                  <img src={item.src} alt={item.title} className="gallery-card-img" />
+                  <div className="gallery-card-overlay">
+                    <div className="gallery-card-meta">
+                      <span className="gallery-card-cat">{item.category} • {item.year}</span>
+                      <h3 className="gallery-card-title">{item.title}</h3>
+                      <span className="gallery-card-action">
+                        View Project <span className="arrow">→</span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Copyright notice card */}
+          <div className="copyright-note-card" data-aos="fade-up">
+            <span className="copyright-note-title">✦ STUDIO COPYRIGHT NOTICE:</span>
+            <p className="copyright-note-text">
+              All images and photographic artworks displayed are protected under intellectual property law and licensed exclusively to TYSON STUDIO. Unauthorized reproduction or commercial use is strictly prohibited.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Fullscreen Lightbox Modal */}
+      {selectedImage && (
+        <div className="gallery-lightbox-overlay" onClick={() => setSelectedImage(null)}>
+          <div className="gallery-lightbox-modal" onClick={(e) => e.stopPropagation()}>
+            <button className="gallery-lightbox-close" onClick={() => setSelectedImage(null)}>✕</button>
+            <div className="gallery-lightbox-img-wrap">
+              <img src={selectedImage.src} alt={selectedImage.title} className="gallery-lightbox-img" />
+            </div>
+            <div className="gallery-lightbox-info">
+              <div>
+                <span className="label">{selectedImage.category} • {selectedImage.year}</span>
+                <h3 className="gallery-lightbox-title">{selectedImage.title}</h3>
+              </div>
+              <button className="btn btn-outline" onClick={() => setSelectedImage(null)}>Close Preview</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Footer */}
+      <Footer />
+    </div>
+  );
+};
+
+export default Gallery;

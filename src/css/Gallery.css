@@ -1,80 +1,311 @@
-.galrow img{
-    height: 16rem;
-    width: 20rem;
-    margin: 20px 0px 10px 20px!important;
-    box-shadow: 1px 2px 5px 6px rgba(0,0,0,0.75);
-    -webkit-box-shadow: 1px 2px 5px 6px rgba(0,0,0,0.75);
-    -moz-box-shadow: 1px 2px 5px 6px rgba(0,0,0,0.75);
-  
-   
+/* ============================================
+   TYSON STUDIO — Luxury Gallery Page Styling
+   ============================================ */
+
+.gallery-page {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  padding-top: var(--navbar-height);
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
-.galrow{
-  background-color: #FE0000 !important;
-  
+.gallery-main-section {
+  padding: var(--space-3xl) 0 var(--space-5xl);
 }
-.galrow h6{
-  color: #ffffff !important;
+
+/* ---- Filter Tabs ---- */
+.gallery-filter-tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: var(--space-3xl);
 }
-.gall{
-  color: #ff0000 !important;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-weight: 800;
-  text-shadow: -1px 1px 2px rgba(255,255,255,0.6),-1px 1px 6px rgba(255,255,255,0.6),-1px 1px 2px rgb(255, 0, 136) !important;
-  
+
+.gallery-filter-btn {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border);
+  padding: 0.7rem 1.4rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-base);
 }
-.galrow h2{
-  margin-top: 20px;
+
+.gallery-filter-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--border-hover);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.gallery-filter-btn.active {
+  color: #ffffff;
+  background-color: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 4px 15px rgba(200, 16, 46, 0.35);
+}
+
+/* ---- Editorial Masonry Grid ---- */
+.gallery-masonry-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 240px;
+  grid-auto-flow: dense;
+  gap: var(--space-lg);
+}
+
+.gallery-card-item {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background-color: var(--bg-elevated);
+  cursor: pointer;
+}
+
+.gallery-card-item.size-standard {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+.gallery-card-item.size-tall {
+  grid-column: span 1;
+  grid-row: span 2;
+}
+
+.gallery-card-item.size-large {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.gallery-card-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.gallery-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.gallery-card-item:hover .gallery-card-img {
+  transform: scale(1.06);
+}
+
+/* Overlay & Meta */
+.gallery-card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to top,
+    rgba(10, 10, 10, 0.95) 0%,
+    rgba(10, 10, 10, 0.4) 50%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  display: flex;
+  align-items: flex-end;
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.gallery-card-item:hover .gallery-card-overlay {
+  opacity: 1;
+}
+
+.gallery-card-meta {
+  transform: translateY(15px);
+  transition: transform var(--transition-base);
+  width: 100%;
+}
+
+.gallery-card-item:hover .gallery-card-meta {
+  transform: translateY(0);
+}
+
+.gallery-card-cat {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.gallery-card-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.gallery-card-action {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.gallery-card-action .arrow {
+  transition: transform var(--transition-fast);
+}
+
+.gallery-card-item:hover .gallery-card-action .arrow {
+  transform: translateX(4px);
+}
+
+/* ---- Lightbox Modal ---- */
+.gallery-lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(5, 5, 5, 0.95);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.gallery-lightbox-modal {
+  position: relative;
+  max-width: 950px;
+  width: 100%;
+  max-height: 90vh;
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  display: flex;
+  flex-direction: column;
+}
+
+.gallery-lightbox-close {
+  position: absolute;
+  top: 1rem;
+  right: 1.25rem;
+  font-size: 1.5rem;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all var(--transition-fast);
+}
+
+.gallery-lightbox-close:hover {
+  background-color: var(--accent);
   color: #fff;
 }
-.headwed{
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-weight: 800;
-  text-shadow: -2px 2px 2px rgba(0,0,0,0.6),-1px 1px 2px rgb(0, 0, 0);
+
+.gallery-lightbox-img-wrap {
+  width: 100%;
+  max-height: 65vh;
+  overflow: hidden;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.galsec{
-  background-color: #000000 !important;
+
+.gallery-lightbox-img {
+  width: 100%;
+  height: 100%;
+  max-height: 65vh;
+  object-fit: contain;
 }
-.galsubb{
-  color: #f2ff00 !important;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-weight: 800;
+
+.gallery-lightbox-info {
+  padding: 1.5rem 2rem;
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.nt1{
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  font-weight: 600;
-  color: #fbff00 !important;
+
+.gallery-lightbox-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  margin-top: 0.25rem;
 }
-.ntot{
-  color:#000000 !important;
+
+/* ---- Responsive Breakpoints ---- */
+@media (max-width: 1200px) {
+  .gallery-masonry-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
-@media (max-width: 1024px) {
-   
-   .galrow img{
-    margin: 20px 5px !important;
-    width: 14rem !important;
-  }  
-  .galsec{
-    overflow-x: hidden !important;
+
+@media (max-width: 850px) {
+  .gallery-masonry-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 220px;
   }
 
-}
-@media (max-width: 768px) {
-  .galrow img{
-    margin: 20px 20px !important;
-  }  
-  .galsec{
-    overflow-x: hidden !important;
+  .gallery-card-item.size-large {
+    grid-column: span 2;
+    grid-row: span 1;
   }
 }
-@media (max-width: 480px) {
-  .galrow img{
-    margin: 20px 70px !important;
-    width: 20rem !important;
-    overflow-x: hidden !important;
-  }  
-  .galsec{
-    overflow-x: hidden !important;
+
+@media (max-width: 550px) {
+  .gallery-masonry-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 260px;
   }
 
+  .gallery-card-item.size-standard,
+  .gallery-card-item.size-tall,
+  .gallery-card-item.size-large {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  .gallery-filter-tabs {
+    gap: 0.4rem;
+  }
+
+  .gallery-filter-btn {
+    font-size: 0.7rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .gallery-lightbox-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
 }

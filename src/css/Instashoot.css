@@ -1,145 +1,234 @@
-.formbook{
-    background-color: #FE0000 !important;
-    color: #ffffff !important;
-    border-radius: 5px !important;
-    border: none !important;
-    box-shadow: -1px 0px 12px 5px rgba(0,0,0,0.79);
-    -webkit-box-shadow: -1px 0px 12px 5px rgba(0,0,0,0.79);
-    -moz-box-shadow: -1px 0px 12px 5px rgba(0,0,0,0.79);
-    width: 550px !important;
-    padding-top: 5px !important;
-    margin-top: 15px !important;
+/* ============================================
+   TYSON STUDIO — Luxury Booking Form Pages Styles
+   ============================================ */
+
+.booking-page {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  padding-top: var(--navbar-height);
+  min-height: 100vh;
+  overflow-x: hidden;
 }
-.formbook input{
-    max-width: 1000px !important;
-    border-radius: 5px !important;
-    border-style: none !important;
-    outline: none !important;
-    padding: 2px 100px !important;
-    margin: 7px 80px !important;
-    color: #FE0000 !important;
+
+/* 50/50 Equal Width & Equal Height Grid */
+.booking-layout-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Equal 50/50 Width */
+  gap: clamp(2rem, 3.5vw, 3.5rem);
+  align-items: stretch; /* Equal 100% Height */
+  margin-top: var(--space-2xl);
+  margin-bottom: var(--space-4xl);
 }
-.formbook input[type=date]{
-    width: 380px !important;
+
+/* ---- Left: Package Summary Card ---- */
+.booking-package-card {
+  background: linear-gradient(180deg, #191919 0%, #121212 100%);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-lg);
+  padding: clamp(2.25rem, 3.5vw, 3rem);
+  box-shadow: var(--shadow-xl);
+  height: 100%; /* Equal Height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
 }
-.formbook button{
-    color: #FE0000 !important;
-    background-color: #000000 !important;
-    border-radius: 5px !important;
-    border-style: none !important;
-    outline: none !important;
-    padding: 2px 100px !important;
-    margin: 10px 110px !important;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: 50 !important;
+
+.booking-package-header {
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1.25rem;
 }
-.formbook button:hover{
-    color: #000000 !important;
-    background-color: #eaff00 !important;
+
+.booking-package-title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.35rem;
 }
-.formbook textarea{
-    padding: 3px 100px !important;
-    margin: 10px 80px !important;
-    border-radius: 5px !important;
-    border-style: none !important;
-    outline: none !important;
-    width: 380px !important;
+
+.booking-package-sub {
+  font-size: 0.82rem;
+  color: var(--accent);
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  display: block;
 }
-.formbook label{
-    margin-left: 80px !important;
+
+.booking-package-features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.95rem;
+  margin-bottom: 1.75rem;
+  flex-grow: 1;
 }
+
+.booking-feature-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.94rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+.booking-feature-icon {
+  color: var(--accent);
+  flex-shrink: 0;
+  margin-top: 2px;
+  font-size: 0.95rem;
+}
+
+/* Benefits Box */
+.booking-benefits-box {
+  background: rgba(229, 9, 20, 0.08);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-sm);
+  padding: 1.25rem;
+  margin-bottom: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.booking-benefits-title {
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.booking-benefits-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  margin: 0;
+}
+
+.booking-pricing-box {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.booking-price-val {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+/* ---- Right: Glassmorphic Booking Form Card ---- */
+.booking-form-card {
+  background: linear-gradient(180deg, #191919 0%, #131313 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: clamp(2.25rem, 3.5vw, 3rem);
+  box-shadow: var(--shadow-xl);
+  height: 100%; /* Equal Height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.booking-form-heading {
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  color: #ffffff;
+}
+
+.booking-form-intro {
+  font-size: 0.94rem;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+
+.booking-form-group {
+  margin-bottom: 1.35rem;
+}
+
+.booking-form-label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.booking-form-input {
+  width: 100%;
+  padding: 0.95rem 1.15rem;
+  background-color: #101010 !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-sm);
+  color: #ffffff !important;
+  font-size: 0.96rem;
+  transition: all var(--transition-fast);
+}
+
+.booking-form-input:focus {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px var(--accent-subtle) !important;
+  background-color: #141414 !important;
+}
+
+.booking-form-input::placeholder {
+  color: var(--text-muted);
+}
+
+.booking-form-input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+}
+
+textarea.booking-form-input {
+  min-height: 110px;
+  resize: vertical;
+}
+
+/* Booking submit button with radiant attractive glow and animations */
+.booking-submit-btn {
+  width: 100% !important;
+  padding: 1.15rem 2rem !important;
+  font-size: 0.88rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase !important;
+  margin-top: 1.25rem !important;
+  justify-content: center !important;
+  background: var(--accent-gradient) !important;
+  color: #ffffff !important;
+  box-shadow: 0 6px 25px rgba(229, 9, 20, 0.45) !important;
+  border: none !important;
+  border-radius: var(--radius-sm) !important;
+  transition: all var(--transition-base) !important;
+}
+
+.booking-submit-btn:hover {
+  background: var(--accent-gradient-hover) !important;
+  box-shadow: 0 10px 40px rgba(229, 9, 20, 0.7) !important;
+  transform: translateY(-3px) scale(1.01) !important;
+}
+
+.booking-submit-btn:active {
+  transform: translateY(-1px) scale(0.99) !important;
+}
+
+/* Responsive */
 @media (max-width: 1024px) {
-    .formbook{
-        width: 450px !important;
-        margin: 10px  0px !important;
-    }
-    .formbook input{
-        margin: 5px 30px !important;
-    }
-    .formbook textarea{
-        margin: 5px 30px !important;
-    }
-    .formbook button{
-        margin: 22px 50px !important;
-    }
-    .booksecwed{
-        overflow-x: hidden !important;
-    }
- 
-}
-@media (max-width: 768px) {
-    .formbook{
-        width: 320px !important;
-        margin: 62px  0px !important;
-    }
-    .formbook input{
-        max-width: 1000px !important;
-        border-radius: 5px !important;
-        border-style: none !important;
-        outline: none !important;
-        padding: 2px 10px !important;
-        margin: 13px 60px !important;
-        color: #FE0000 !important;
-    }
-    .formbook input[type=date]{
-        width:200px !important;
-    }
-    .formbook button{
-        outline: none !important;
-        padding: 2px 0px !important;
-        margin: 10px 60px !important;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
-        font-weight: 50 !important;
-        width: 200px !important;
-    }
-    .formbook textarea{
-        padding: 3px 100px !important;
-        margin: 10px 60px !important;
-        width: 200px !important;
-    }
-    .formbook label{
-        margin-left: 60px !important;
-    }
-    .booksecwed{
-        overflow-x: hidden !important;
-    }
- 
-}
-@media (max-width: 480px) {
-    .formbook{
-        width: 320px !important;
-        margin: 10px  50px !important;
-    }
-    .formbook input{
-        max-width: 1000px !important;
-        border-radius: 5px !important;
-        border-style: none !important;
-        outline: none !important;
-        padding: 2px 10px !important;
-        margin: 7px 60px !important;
-        color: #FE0000 !important;
-    }
-    .formbook input[type=date]{
-        width:200px !important;
-    }
-    .formbook button{
-        outline: none !important;
-        padding: 2px 0px !important;
-        margin: 10px 60px !important;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
-        font-weight: 50 !important;
-        width: 200px !important;
-    }
-    .formbook textarea{
-        padding: 3px 100px !important;
-        margin: 10px 60px !important;
-        width: 200px !important;
-    }
-    .formbook label{
-        margin-left: 60px !important;
-    }
-    .booksecwed{
-        overflow-x: hidden !important;
-    }
- 
+  .booking-layout-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
 }

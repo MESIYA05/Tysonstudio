@@ -1,195 +1,347 @@
-.price1{
-    color: #c0baba;
-    text-decoration: line-through;
-}
-.headwed{
-    padding-top: 50px !important;
-}
-.wedrow1{
-    background-color: #ffffff !important;
-    margin-bottom: 20px !important;
-}
-.cardtit{
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-weight: 900;
-    font-size: 23px !important;
-}
-.cardtext{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: medium !important;
-    font-weight: 500;
-}
-.wedrow1 h2 {
-    color: #fff;
-}
-.wedrow1 h6{
-    color: #fff;
+/* ============================================
+   TYSON STUDIO — Service Pages (Wedding, Maternity, Kids, Prewedding, Party, Vacation)
+   ============================================ */
 
-}
-.wedsu{
-    color: #FE0000 !important;
-}
-.hk{
-    color: #FE0000 !important;
-    font-weight: 700;
-}
-.hededed{
-    color: #06b693 !important;
-}
-.white{
-    color: #ffffff !important;
-    font-weight: 700;
-}
-.wedrow2 h6{
-    color: #fff;
-}
-.cardbody{
-    background-color: #FE0000 !important;
-    color: #ffffff !important;
-    border-radius: 5px !important;
-    border: none !important;
-    box-shadow: -1px 0px 12px 5px rgba(0,0,0,0.79);
-    -webkit-box-shadow: -1px 0px 12px 5px rgba(0,0,0,0.79);
-    -moz-box-shadow: -1px 0px 12px 5px rgba(0,0,0,0.79);
-}
-.wedrow2{
-    background-color: rgb(232, 0, 54);
-}
-.wedrow2 h2{
-    padding-top: 20px !important;
-}
-.wedrow2 img{
-    height: 16rem;
-    width: 20rem;
-    margin: 20px 0px 20px 20px !important;
-    box-shadow: -1px 0px 12px 5px rgba(0,0,0,0.79);
--webkit-box-shadow: -1px 0px 12px 5px rgba(0,0,0,0.79);
--moz-box-shadow: -1px 0px 12px 5px rgba(0,0,0,0.79);
-    
-   
-}
-.hyper{
-    border: 0px solid #000000 !important;
-    height: 40px !important;
-    width: 150px !important;
-    margin: 0px 150px !important;
-    padding: 9px 0px !important;
-    border-radius: 5px;
-    background-color: #fff !important;
-   
-}
-.hyper a{
-    color: #FE0000 !important;
-    font-weight: 900 !important;
-}
-.hyper:hover{
-    background-color:  #000000 !important;
-    color: #ffffff  !important;
-}
-.hyper a:hover{
-    color: #ffffff  !important;
-}
-.wedfooter{
-    background-color: #000000;
-    color: #fff;
-    
-}
-.wedfosp span{
-    color: #F72119;
-}
-.wedfosp{
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-weight: 200;
-    padding-top: 20px !important;
-}
-.wedfoh5{
-    color: #fff;
-    font-weight: 600;
-}
-.wedhed{
-    text-align: center !important;
+.service-page {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  padding-top: var(--navbar-height);
+  overflow-x: hidden;
 }
 
+/* ---- Service Hero Banner ---- */
+.service-hero-banner {
+  position: relative;
+  padding: clamp(4.5rem, 8vw, 6.5rem) 0 3.75rem;
+  background: radial-gradient(circle at 50% 25%, rgba(229, 9, 20, 0.16) 0%, rgba(10, 10, 10, 0.98) 75%);
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+}
+
+.service-hero-title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0.5rem 0 1rem;
+}
+
+.service-hero-sub {
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  color: var(--text-secondary);
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+/* ---- Pricing Section ---- */
+.service-pricing-section {
+  padding: var(--space-4xl) 0;
+  background-color: var(--bg-primary);
+}
+
+.pricing-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1.75rem, 3vw, 3rem);
+  max-width: 1100px;
+  margin: 0 auto;
+  align-items: stretch; /* Guarantees equal height */
+}
+
+.pricing-card {
+  background: linear-gradient(180deg, #181818 0%, #121212 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: clamp(2.25rem, 4vw, 3.25rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%; /* Equal height */
+  position: relative;
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-md);
+}
+
+.pricing-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--border-accent);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(229, 9, 20, 0.2);
+}
+
+.pricing-card.featured-tier {
+  border-color: var(--accent);
+  background: linear-gradient(180deg, #1d1516 0%, #141011 100%);
+  box-shadow: 0 8px 30px rgba(229, 9, 20, 0.22);
+}
+
+.pricing-card.featured-tier:hover {
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.9), 0 0 35px rgba(229, 9, 20, 0.35);
+}
+
+.tier-badge {
+  position: absolute;
+  top: -12px;
+  right: 2rem;
+  background: var(--accent-gradient);
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  padding: 0.35rem 1rem;
+  border-radius: var(--radius-full);
+  box-shadow: 0 4px 15px rgba(229, 9, 20, 0.5);
+}
+
+.tier-title {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  color: #ffffff;
+}
+
+.tier-tagline {
+  font-size: 0.82rem;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1.75rem;
+  display: block;
+}
+
+.tier-features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin-bottom: 2.25rem;
+  flex-grow: 1;
+}
+
+.tier-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.94rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+.tier-feature-bullet {
+  color: var(--accent);
+  font-size: 0.95rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.tier-pricing-wrap {
+  border-top: 1px solid var(--border);
+  padding-top: 1.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.pricing-label {
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.pricing-numbers {
+  display: flex;
+  align-items: baseline;
+  gap: 1.25rem;
+}
+
+.price-strike {
+  font-size: 1.15rem;
+  color: #666666;
+  text-decoration: line-through;
+  font-weight: 500;
+}
+
+.price-current {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+/* Pricing Buttons - Always High Contrast, Clear, and Animated */
+.pricing-btn {
+  width: 100% !important;
+  min-height: 52px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 0.85rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.16em !important;
+  border-radius: var(--radius-sm) !important;
+  margin-top: auto;
+}
+
+.pricing-card .btn-outline {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.3) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+}
+
+.pricing-card .btn-outline:hover {
+  background: var(--accent-gradient) !important;
+  border-color: var(--accent) !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 30px rgba(229, 9, 20, 0.55) !important;
+  transform: translateY(-3px) scale(1.02) !important;
+}
+
+.pricing-card .btn-primary {
+  background: var(--accent-gradient) !important;
+  color: #ffffff !important;
+  box-shadow: 0 6px 25px rgba(229, 9, 20, 0.45) !important;
+}
+
+.pricing-card .btn-primary:hover {
+  background: var(--accent-gradient-hover) !important;
+  box-shadow: 0 10px 35px rgba(229, 9, 20, 0.65) !important;
+  transform: translateY(-3px) scale(1.02) !important;
+}
+
+/* ---- Curated Gallery Showcase Section ---- */
+.service-gallery-section {
+  padding: var(--space-4xl) 0;
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+}
+
+.service-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-lg);
+  margin-top: var(--space-2xl);
+}
+
+.gallery-showcase-item {
+  position: relative;
+  height: 320px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background-color: var(--bg-elevated);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-base);
+}
+
+.gallery-showcase-item:hover {
+  border-color: var(--border-accent);
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.gallery-showcase-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.gallery-showcase-item:hover .gallery-showcase-img {
+  transform: scale(1.08);
+}
+
+.gallery-showcase-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(10, 10, 10, 0.85) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  display: flex;
+  align-items: flex-end;
+  padding: 1.25rem;
+}
+
+.gallery-showcase-item:hover .gallery-showcase-overlay {
+  opacity: 1;
+}
+
+.gallery-showcase-caption {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+/* Copyright note */
+.copyright-note-card {
+  margin-top: var(--space-3xl);
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 1.25rem 1.75rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.copyright-note-title {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #ffffff;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+
+.copyright-note-text {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ---- Responsive Breakpoints ---- */
 @media (max-width: 1024px) {
-    .wedrow2 img{
-        margin: 20px 7px !important;
-        width: 14rem !important;
-    }
-    .cardwed{
-        margin-left: 50px !important;
-        width: 25rem !important;
-        
-    }
-    .weddingsection{
-        overflow-x: hidden !important;
-    }
- 
- }
-@media (max-width: 768px) {
-    
-    .wedfooter .wedfoh5{
-        text-align: start !important;
-        margin-left: 50px !important;
-    }
-    .wedfosp{
-        text-align: start !important;
-        margin-left: 50px !important;
-    }
-    .wedfo{
-        margin-right: 100px !important;
-       
-    }
-    .wedhed{
-        text-align: start !important;
-        word-wrap: break-word !important;
-        border: 1px solid black;
-        font-size: 12px !important;
-        font-weight: 900;
-    }
-    .wedsech5{
-        text-align: justify !important;
-        margin-right: 10px !important;
-    }
-    .wedico{
-        text-align: justify !important;
-        margin-right: 0px !important;
-    }
-    .wedcopy{
-        /* margin-right: 100px !important; */
-        margin-left: 5px !important;
-    }
-    .wedrow2 img{
-        margin: 20px 70px !important;
-    }
-    .hyper{
-        margin: 0px 80px !important;
-    }
-    .cardwed{
-        margin: 40px 5px !important;
-        width: 20rem !important;
-    }
-    .wedrow2 img{
-     
-        margin: 20px 0px 20px 20px !important;
-    }
-    .weddingsection{
-        overflow-x: hidden !important;
-    }
+  .service-gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
+
+@media (max-width: 768px) {
+  .pricing-cards-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  .service-gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+  }
+
+  .gallery-showcase-item {
+    height: 240px;
+  }
+
+  .copyright-note-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+
 @media (max-width: 480px) {
-    .wedrow2 img{
-        margin: 20px 60px !important;
-        width: 20rem !important;
-    }
-    .hyper{
-        margin: 0px 80px !important;
-    }
-    .cardwed{
-        margin: 70px 55px !important;
-        
-    }
-    .weddingsection{
-        overflow-x: hidden !important;
-    }
-   
+  .service-gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-showcase-item {
+    height: 260px;
+  }
 }

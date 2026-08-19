@@ -1,19 +1,16 @@
-import React from 'react'
-import { useState,useEffect } from 'react'; 
-import '../css/Instashoot.css'
-import Card from 'react-bootstrap/Card';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faLink,faEnvelope,} from '@fortawesome/free-solid-svg-icons';
-import {faInstagram,faFacebook,faWhatsapp,} from '@fortawesome/free-brands-svg-icons';
-import AOS from 'aos'
-import 'aos/dist/aos.css'
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import Swal from 'sweetalert2';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import '../css/Instashoot.css';
+import Footer from './Footer';
 
 const Prewedinsta = () => {
-    useEffect (() => {
-        AOS.init({})
-         },[])
-  // Get today's date in YYYY-MM-DD format
+  useEffect(() => {
+    AOS.init({ duration: 800, once: true });
+  }, []);
+
   const today = new Date().toISOString().split('T')[0];
 
   const [formData, setFormData] = useState({
@@ -23,6 +20,7 @@ const Prewedinsta = () => {
     date: '',
     message: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,106 +29,209 @@ const Prewedinsta = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (isSubmitting) return;
 
+    setIsSubmitting(true);
     const dataToSend = {
       ...formData,
-      service: 'pre wedding [insta shoot]', // Use "service" instead of "servive"
+      service: 'pre wedding [insta shoot]',
       amount: 15999,
     };
 
     try {
       const response = await axios.post('http://127.0.0.1:8000/rest/studio/', dataToSend, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
       });
       console.log('Success:', response.data);
-      alert('Booking Successfully!');
+
+      await Swal.fire({
+        icon: 'success',
+        title: 'Booking Submitted Successfully!',
+        text: 'Thank you for choosing TYSON STUDIO. We will get back to you shortly to finalize your Pre Wedding session.',
+        confirmButtonText: 'OK',
+      });
+
+      setFormData({
+        name: '',
+        email: '',
+        mobile: '',
+        date: '',
+        message: '',
+      });
     } catch (error) {
-      if (error.response && error.response.data) {
-        console.error('Validation errors:', error.response.data);
-        alert(`Booking Failed pls try again!:\n${JSON.stringify(error.response.data, null, 2)}`);
-      } else {
-        console.error('Error:', error);
-        alert('An unexpected error occurred.');
-      }
+      console.error('Booking submission error:', error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Something Went Wrong',
+        text: "We couldn't process your booking. Please try again.",
+        confirmButtonText: 'Try Again',
+      });
+    } finally {
+      setIsSubmitting(false);
     }
   };
+
   return (
-    <>
-      <section className='booksecwed'>
-        <div className="container-fluid">
-        <h1 className='text-center headwed' data-aos="fade-down" data-aos-duration="1000">PRE <span className='uniqhead'>WEDDING'S</span></h1>
-        <h6 className='text-center wedsu' data-aos="fade-up" data-aos-duration="1000">Make sure the moment of a lifetime is captured for eternity.</h6>
-        <div className='row wedrow1'>
-
-<div className="col-lg-12 col-md-12 col-12 heded">
-  <h2 className='text-center hk' data-aos="fade-right" data-aos-duration="1000">Pricing Plans <span>.</span></h2>
-  <h6 className='text-center hededed' data-aos="fade-left" data-aos-duration="1000">Plans at a bargain price, no need of a second option. 100% refunds on cancellation within 48 hours of booking.</h6>
-</div>
-
-<div className="col-lg-6 col-md-6 col-12">
-           <Card style={{ width: '34rem',height:'26rem'}} className='cardwed'data-aos="fade-right" data-aos-duration="1000">
-           <Card.Body style={{backgroundColor:"white",border:'none '}}  className='cardbody'>
-           <Card.Title className='cardtit'>INSTA SHOOT'S</Card.Title>
-           <Card.Text className="cardtext">
-            Photography only <br /><br/>
-            ✧ 25 Edited images.<br />  <br />
-            ✧ 4 Hours shoot,2 locations & 2 Dress <br /> &nbsp;&nbsp; Changes.   <br />  <br />
-            ✧ Full Frame Camera & 1 Photographer  <br /> &nbsp;&nbsp;with Prime  Lens. <br />
-            </Card.Text>  
-           <Card.Subtitle>Offer Price: <br /> <br />₹  :  
-           &nbsp; <span className='price1'>16999</span>  &nbsp;&nbsp;&nbsp;₹  :  <span className='price2'>15999 </span> 
-           </Card.Subtitle> <br />
-          
-           </Card.Body>
-           </Card>
-          </div>
-
-
-<div className="col-lg-6 col-md-6 col-12 con2">
-              <form   onSubmit={handleSubmit} className='formbook' data-aos="fade-left" data-aos-duration="1000">
-              <label htmlFor="name">Name : </label><br />
-              <input type="text" name='name' value={formData.name} onChange={handleChange} placeholder='    enter name' minLength={3} maxLength={20}required /> <br />
-              <label htmlFor="email">Email : </label><br />
-              <input type="email" name='email' value={formData.email} onChange={handleChange} placeholder='   enter email' required /> <br />
-              <label htmlFor="mobile">Mobile : </label><br />
-              <input type="text"   name='mobile' value={formData.mobile} onChange={handleChange}  placeholder='   enter mobile number'minLength={12} maxLength={12}required/> <br />
-              <label htmlFor="date">Shoot Date : </label><br />
-              <input type="date"   name='date'    value={formData.date} onChange={handleChange} min={today} required/> <br />
-              <label htmlFor="message">Your Message : </label><br />
-              <textarea type="text" name='message' value={formData.message} onChange={handleChange}  placeholder='   enter ur message' minLength={15} required/> <br />
-             
-              <button type="submit">BOOKING NOW</button>
-              </form>
-               </div>
-
-
-</div>
-
-
-                <div className="row">
-                                          
-                                                <div className="col-lg-12 col-md-12 col-12 wedfooter" data-aos="fade-up" data-aos-duration="1000">
-                                                 <h1 className="text-center wedfosp wedfo"><span>TYSON</span> STUDIO</h1>
-                                                 <h5 className="text-center foh5">Stay Connected With Our Photographers</h5><br/>
-                                                 <p className="wedhed text-center">Ldrago has made Professional Photograpy service easy to <br/>  access.  Doesn't matter if you want 
-                                                               multiple shoots at a time or <br/> multiple locations at a time. We're Present across 135 international <br/> destinations with multiple teams at every location.
-                                                 </p>
-                                                 <h5 className="text-center wedsech5">Follow Us</h5>
-                                                 <h4 className="text-center wedico"><a href="https://www.facebook.com/mesiya.mesiya.927?mibextid=ZbWKwL"><FontAwesomeIcon icon={faFacebook} style={{color:'#fa0505'}} /></a>&nbsp;&nbsp;&nbsp;
-                                                          <a href="https://www.instagram.com/dark_shadow_boy_05/profilecard/?igsh=dGpidjVvcHkyYzFh"><FontAwesomeIcon icon={faInstagram} style={{color:'#fa0505'}} /></a>&nbsp;&nbsp;&nbsp;
-                                                          <a href="mailto:mesiya2002samy@gmail.com" ><FontAwesomeIcon icon={faEnvelope} style={{color:'#fa0505'}} /></a>&nbsp;&nbsp;&nbsp;
-                                                          <a href="http://wa.me/+919361726533"><FontAwesomeIcon icon={faWhatsapp} style={{color:'#fa0505'}} /></a>&nbsp;&nbsp;&nbsp;
-                                                          <a href="https://mesiya-portfolio.netlify.app/"><FontAwesomeIcon icon={faLink} style={{color:'#fa0505'}} /></a></h4><br/>
-                                                          <h6  className="text-center fosp wedcopy">Copyright © 2025 <span>TYSON</span> STUDIO | All rights reserved !</h6>
-                                                </div>
-                                          
-                         </div>
+    <div className="booking-page">
+      <section className="service-hero-banner">
+        <div className="container">
+          <span className="label" data-aos="fade-down">RESERVATION</span>
+          <h1 className="service-hero-title" data-aos="fade-up">
+            PRE WEDDING INSTA SHOOT <span className="text-accent">.</span>
+          </h1>
+          <p className="service-hero-sub" data-aos="fade-up" data-aos-delay="100">
+            Book your romantic outdoor pre-wedding photography session with TYSON STUDIO.
+          </p>
         </div>
       </section>
-    </>
-  )
-}
 
-export default Prewedinsta
+      <div className="container">
+        <div className="booking-layout-grid">
+          {/* Package Summary Card */}
+          <div className="booking-package-card" data-aos="fade-right">
+            <div>
+              <div className="booking-package-header">
+                <span className="booking-package-sub">Package Tier</span>
+                <h2 className="booking-package-title">Insta Shoot</h2>
+                <p className="body-sm">Essential couple photography across 2 scenic spots.</p>
+              </div>
+
+              <div className="booking-package-features">
+                <div className="booking-feature-row">
+                  <span className="booking-feature-icon">✦</span>
+                  <span>25 Master Retouched High-Res Images</span>
+                </div>
+                <div className="booking-feature-row">
+                  <span className="booking-feature-icon">✦</span>
+                  <span>4 Hours Active Shoot Window</span>
+                </div>
+                <div className="booking-feature-row">
+                  <span className="booking-feature-icon">✦</span>
+                  <span>2 Curated Locations & 2 Wardrobe Changes</span>
+                </div>
+                <div className="booking-feature-row">
+                  <span className="booking-feature-icon">✦</span>
+                  <span>Full Frame Body & Prime Lens Portraiture</span>
+                </div>
+              </div>
+
+              {/* Studio Assured Benefits */}
+              <div className="booking-benefits-box">
+                <span className="booking-benefits-title">✦ Studio Guarantees & Features</span>
+                <p className="booking-benefits-desc">
+                  • 100% Refund guarantee on cancellations within 48 hours.<br/>
+                  • Professional pose guidance & ambient lighting coordination.<br/>
+                  • Edited digital album download link delivered in 72 hours.
+                </p>
+              </div>
+            </div>
+
+            <div className="booking-pricing-box">
+              <div>
+                <span className="pricing-label">Package Total</span>
+                <div style={{ textDecoration: 'line-through', color: 'var(--text-muted)', fontSize: '0.85rem' }}>₹ 16,999</div>
+              </div>
+              <span className="booking-price-val">₹ 15,999</span>
+            </div>
+          </div>
+
+          {/* Booking Form Card */}
+          <div className="booking-form-card" data-aos="fade-left">
+            <div>
+              <h2 className="booking-form-heading">Client Details</h2>
+              <p className="booking-form-intro">Provide your details to schedule your couple session.</p>
+
+              <form onSubmit={handleSubmit}>
+                <div className="booking-form-group">
+                  <label className="booking-form-label" htmlFor="name">Full Name *</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Enter your full name"
+                    minLength={3}
+                    maxLength={50}
+                    className="booking-form-input"
+                    required
+                  />
+                </div>
+
+                <div className="booking-form-group">
+                  <label className="booking-form-label" htmlFor="email">Email Address *</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="name@example.com"
+                    className="booking-form-input"
+                    required
+                  />
+                </div>
+
+                <div className="booking-form-group">
+                  <label className="booking-form-label" htmlFor="mobile">Mobile Number *</label>
+                  <input
+                    type="tel"
+                    id="mobile"
+                    name="mobile"
+                    value={formData.mobile}
+                    onChange={handleChange}
+                    placeholder="e.g. +91 9361726533"
+                    minLength={10}
+                    maxLength={15}
+                    className="booking-form-input"
+                    required
+                  />
+                </div>
+
+                <div className="booking-form-group">
+                  <label className="booking-form-label" htmlFor="date">Scheduled Shoot Date *</label>
+                  <input
+                    type="date"
+                    id="date"
+                    name="date"
+                    value={formData.date}
+                    onChange={handleChange}
+                    min={today}
+                    className="booking-form-input"
+                    required
+                  />
+                </div>
+
+                <div className="booking-form-group">
+                  <label className="booking-form-label" htmlFor="message">Preferred Locations & Notes *</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder="Tell us about desired locations, themes, or concept ideas..."
+                    minLength={10}
+                    className="booking-form-input"
+                    required
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className={`btn btn-primary booking-submit-btn ${isSubmitting ? 'btn-loading' : ''}`}
+                >
+                  {isSubmitting ? 'Processing Booking...' : 'Confirm Reservation →'}
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <Footer />
+    </div>
+  );
+};
+
+export default Prewedinsta;

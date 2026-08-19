@@ -1,80 +1,118 @@
-.revhead{
-    padding-top: 50px !important;
-}
-.cardreview{
-    border-radius: 25% 5% !important;
-    background-color: #FE0000 !important;
-    color: #ffffff;
-    transition: 1s ease-in-out;
-}
-.cardss{
-   border-radius: 25% !important;
-    background-color: #FE0000;
-    border: none !important;
-    color: #ffffff;
+/* ============================================
+   TYSON STUDIO — Luxury Reviews Page Styling
+   ============================================ */
 
+.reviews-page {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  padding-top: var(--navbar-height);
+  min-height: 100vh;
+  overflow-x: hidden;
 }
- .cardreview img{
-    margin-top: 20px !important;
-    border: 2px solid #ffffff;
- }
- .cardreview:hover{
-   transform: scale(1.1) !important;
-   background-color: #000000!important;
-  
-  
- }
- 
- .cardss:hover{
-   border:none !important;
-  
 
-  
- }
- .tit{
-    text-align: center;
-    color: #ffffff !important;
- }
- .te{
-   color: #ffffff !important;
- }
- .uniqhead{
-    color: #e70000;
- }
- .te{
-   padding: 0px 10px !important;
- }
- @media (max-width: 1024px) {
-   .cardreview{
-      height: 22rem !important;
-      width: 18rem !important;
-      margin: 20px 10px !important;
-     }
-     .revhead{
-      padding-top: 90px !important;
+.reviews-main-section {
+  padding: var(--space-4xl) 0 var(--space-5xl);
+}
+
+.reviews-editorial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+}
+
+.review-luxury-card {
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 2.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all var(--transition-base);
+  position: relative;
+}
+
+.review-luxury-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-lg);
+  background-color: #1f1f1f;
+}
+
+.review-stars-wrap {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.review-star {
+  color: #ffb800;
+  font-size: 1.1rem;
+}
+
+.review-quote-text {
+  font-size: 0.95rem;
+  color: #e0e0e0;
+  line-height: 1.7;
+  font-style: italic;
+  margin-bottom: 2rem;
+  flex-grow: 1;
+}
+
+.review-author-wrap {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-top: 1px solid var(--border);
+  padding-top: 1.25rem;
+}
+
+.review-avatar-frame {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--accent);
+  flex-shrink: 0;
+}
+
+.review-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.review-author-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.review-author-name {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
+}
+
+.review-author-role {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .reviews-editorial-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
-
- }
- @media (max-width: 768px) {
-     .cardreview img{
-        margin:20px 10px 0px 100px !important;
-        
-     }
-     .cardreview{
-      height: 22rem !important;
-      width: 18rem !important;
-      margin: 20px 40px !important;
-     }
-    
 }
-@media (max-width: 480px) {
-   .cardreview img{
-      margin:20px 10px 0px 100px !important;
-    
- }
-   .cardreview{
-      height: 22rem !important;
-      width: 18rem !important;
-      margin: 20px 80px !important;
- }
+
+@media (max-width: 768px) {
+  .reviews-editorial-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
 }

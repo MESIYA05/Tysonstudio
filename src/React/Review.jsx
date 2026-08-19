@@ -1,4 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import '../css/Review.css';
+import Footer from './Footer';
+
 import review1 from '../ASSETS/review/review1.png';
 import review2 from '../ASSETS/review/review2.png';
 import review3 from '../ASSETS/review/review3.png';
@@ -20,345 +25,222 @@ import review18 from '../ASSETS/review/review18.png';
 import review19 from '../ASSETS/review/review19.png';
 import review20 from '../ASSETS/review/review20.png';
 import review21 from '../ASSETS/review/review21.png';
-import AOS from 'aos'
-import 'aos/dist/aos.css'
-import { useEffect } from 'react';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faLink,faEnvelope} from '@fortawesome/free-solid-svg-icons';
-import {faInstagram,faFacebook,faWhatsapp,} from '@fortawesome/free-brands-svg-icons';
-import Card from 'react-bootstrap/Card';
-import '../css/Review.css';
+
 const Review = () => {
-    useEffect (() => {
-          AOS.init({})
-           },[])
+  useEffect(() => {
+    AOS.init({ duration: 800, once: true });
+  }, []);
+
+  const reviews = [
+    {
+      id: 1,
+      name: 'VASANTHARAJ S',
+      role: 'Wedding Client',
+      img: review1,
+      text: 'Tyson Photography Studio exceeded my expectations in every way! The professionalism and creativity displayed by the team were simply outstanding.'
+    },
+    {
+      id: 2,
+      name: 'ANTONY RAJ C',
+      role: 'Pre Wedding Client',
+      img: review2,
+      text: 'The attention to detail and the quality of the final images were truly top-notch. I highly recommend Tyson Photography Studio for anyone seeking excellent photography services!'
+    },
+    {
+      id: 3,
+      name: 'KILLAN K',
+      role: 'Fashion & Portrait',
+      img: review3,
+      text: "Tyson Photography Studio is absolutely phenomenal! The team's creativity and passion shine through in every shot, capturing moments beautifully."
+    },
+    {
+      id: 4,
+      name: 'VISWHA R',
+      role: 'Event Client',
+      img: review4,
+      text: "I was thrilled with the final photos—they're simply stunning! For anyone in need of outstanding photography, Tyson is the best choice you can make!"
+    },
+    {
+      id: 5,
+      name: 'SIVAGURU K',
+      role: 'Maternity Client',
+      img: review5,
+      text: 'Tyson Photography Studio exceeded all my expectations with their remarkable talent and attention to detail! Every shot captured the essence of the moment, making it an unforgettable experience.'
+    },
+    {
+      id: 6,
+      name: 'MUKESH S',
+      role: 'Commercial Client',
+      img: review6,
+      text: 'Tyson Photography Studio exceeded all expectations—every shot was pure perfection! Superb quality, best service, and an excellent eye for detail—highly recommended!'
+    },
+    {
+      id: 7,
+      name: 'SANJAY V',
+      role: 'Wedding Client',
+      img: review7,
+      text: 'Tyson Photography Studio delivers stunning photos with top-notch professionalism! Truly the best—superb work, excellent service, and unforgettable results!'
+    },
+    {
+      id: 8,
+      name: 'IMMANUVEL A',
+      role: 'Pre Wedding Client',
+      img: review8,
+      text: 'Tyson Photography Studio delivers exceptional quality and captures every moment with stunning precision. Truly the best—super professional, creative, and highly recommended!'
+    },
+    {
+      id: 9,
+      name: 'NATASHA S',
+      role: 'Editorial Client',
+      img: review9,
+      text: 'Tyson Photography Studio is truly a gem, capturing moments like a perfect film. Their work is flawless, sharp, and bright, turning memories into pure delight.'
+    },
+    {
+      id: 10,
+      name: 'JENIFER D',
+      role: 'Baby Shoot Client',
+      img: review10,
+      text: 'From the first click to the final frame, their passion for perfection stays the same. Friendly, skilled, and full of art, Tyson’s team wins every heart.'
+    },
+    {
+      id: 11,
+      name: 'ISWARYA K',
+      role: 'Wedding Client',
+      img: review11,
+      text: 'Stunning edits and angles so right, they make every moment shine bright. Superb service, calm and clear, best studio you’ll ever go near.'
+    },
+    {
+      id: 12,
+      name: 'KHALIFA M',
+      role: 'Vacation Client',
+      img: review12,
+      text: 'Every photo tells a beautiful story, wrapped in love, detail, and glory. Professional, kind, and super creative, they make each session unforgettable and native.'
+    },
+    {
+      id: 13,
+      name: 'SAMANTHA A',
+      role: 'Pre Wedding Client',
+      img: review13,
+      text: "A dream to work with from start to end, they treat each client like a dear friend. Tyson's team is the absolute best, put their skills to the ultimate test!"
+    },
+    {
+      id: 14,
+      name: 'KAYADU LOHAR M',
+      role: 'Fashion Client',
+      img: review14,
+      text: 'Perfect lighting, perfect pose, they truly know how the magic flows. Elegant shots, full of grace, Tyson Photography owns the space.'
+    },
+    {
+      id: 15,
+      name: 'THEANMOZHI G',
+      role: 'Maternity Client',
+      img: review15,
+      text: 'With every snap, they capture soul, turning moments into a timeless scroll. Superb quality in every frame, their work puts others to shame.'
+    },
+    {
+      id: 16,
+      name: 'KANIMOZHI V',
+      role: 'Family Client',
+      img: review16,
+      text: 'Tyson’s crew is pro and kind, with creative genius that’s hard to find. Every shoot is full of fun, the results? Just second to none.'
+    },
+    {
+      id: 17,
+      name: 'ALEXABLIS S',
+      role: 'Event Client',
+      img: review17,
+      text: 'From portraits to events so grand, they take the lead with a steady hand. A studio where art and passion meet, their final shots are pure and sweet.'
+    },
+    {
+      id: 18,
+      name: 'CALADHARAN O',
+      role: 'Corporate Client',
+      img: review18,
+      text: 'On time, on point, with perfect flair, they bring your vision into the air. Top-class photos that stand apart, a team that works with all their heart.'
+    },
+    {
+      id: 19,
+      name: 'PREMJI K',
+      role: 'Wedding Client',
+      img: review19,
+      text: 'Tyson Studio never fails to impress, each photo is art, nothing less. They bring emotion to every frame, their reputation earns them lasting fame.'
+    },
+    {
+      id: 20,
+      name: 'AJITH P',
+      role: 'Pre Wedding Client',
+      img: review20,
+      text: 'Kind and calm with expert eyes, they catch the moments money can’t buy. Each picture feels so rich and true, they truly know what they do.'
+    },
+    {
+      id: 21,
+      name: 'AMBANI S',
+      role: 'Celebration Client',
+      img: review21,
+      text: 'Professional vibes and friendly tone, you’ll never feel lost or alone. With skill and heart, they guide your way, and leave you smiling all the day.'
+    }
+  ];
+
   return (
-    <>
-      <section>
-        <div className="container-fluid">
-        <h1 className='text-center revhead headwed ' data-aos="fade-down" data-aos-duration="1000">CLIENT <span className='uniqhead'>REVIEWS</span></h1>
-      
-      
-      
-      <div className='row '>
-      <div className='col-lg-4 col-md-6 col-12 centr '>
-      
-      <Card style={{ width: '18rem' , height:'20rem', border: '2px solid #fff'}} className='cardreview' data-aos="fade-left" data-aos-duration="1000">
-     <Card.Img  className="text-center img2" variant="top" src={review1} style={{height:'5rem',width:'5rem',borderRadius:'50%',marginLeft:'100px'}} /> <br />
-  
-       <Card.Title className='tit'  >VASANTHARAJ S</Card.Title>
-       <Card.Text className='te text-center'>
-       Tyson Photography Studio exceeded my expectations in every way! The professionalism and creativity displayed by the team were simply outstanding.</Card.Text>
-       
-    
-   </Card>
-     </div>
-
-      <div className='col-lg-4 col-md-6 col-12 centr '>
-      
-      <Card style={{ width: '18rem' , height:'20rem', border: '2px solid #fff'}} className='cardreview'data-aos="fade-right" data-aos-duration="1000">
-     <Card.Img  className="text-center img2" variant="top" src={review2} style={{height:'5rem',width:'5rem',borderRadius:'50%',marginLeft:'100px'}} /> <br />
-  
-       <Card.Title className='tit'  >ANTONY RAJ C</Card.Title>
-       <Card.Text className='te text-center'>
-       The attention to detail and the quality of the final images were truly top-notch. I highly recommend Tyson Photography Studio for anyone seeking excellent photography services!.</Card.Text>
-       
-    
-   </Card>
-     </div>
-     <div className='col-lg-4 col-md-6 col-12 centr '>
-      
-      <Card style={{ width: '18rem' , height:'20rem', border: '2px solid #fff'}} className='cardreview' data-aos="fade-left" data-aos-duration="1000">
-     <Card.Img  className="text-center img2" variant="top" src={review3} style={{height:'5rem',width:'5rem',borderRadius:'50%',marginLeft:'100px'}} /> <br />
-  
-       <Card.Title className='tit'  >KILLAN K</Card.Title>
-       <Card.Text className='te text-center'>
-       Tyson Photography Studio is absolutely phenomenal! The team's creativity and passion shine through in every shot, capturing moments beautifully. </Card.Text>
-       
-    
-   </Card>
-     </div>
-     <div className='col-lg-4 col-md-6 col-12 centr '>
-      
-      <Card style={{ width: '18rem' , height:'20rem', border: '2px solid #fff'}} className='cardreview'data-aos="fade-right" data-aos-duration="1000">
-     <Card.Img  className="text-center img2" variant="top" src={review4} style={{height:'5rem',width:'5rem',borderRadius:'50%',marginLeft:'100px'}} /> <br />
-  
-       <Card.Title className='tit'  >VISWHA R</Card.Title>
-       <Card.Text className='te text-center'>
-       I was thrilled with the final photos—they're simply stunning! For anyone in need of outstanding photography, Tyson is the best choice you can make!</Card.Text>
-       
-    
-   </Card>
-     </div>
-     <div className='col-lg-4 col-md-6 col-12 centr '>
-      
-      <Card style={{ width: '18rem' , height:'20rem', border: '2px solid #fff'}} className='cardreview'data-aos="fade-left" data-aos-duration="1000">
-     <Card.Img  className="text-center img2" variant="top" src={review5} style={{height:'5rem',width:'5rem',borderRadius:'50%',marginLeft:'100px'}} /> <br />
-  
-       <Card.Title className='tit'  >SIVAGURU K</Card.Title>
-       <Card.Text className='te text-center'>
-       "Tyson Photography Studio exceeded all my expectations with their remarkable talent and attention to detail! Every shot captured the essence of the moment, making it an unforgettable experience."</Card.Text>
-       
-    
-   </Card>
-     </div>
-     <div className='col-lg-4 col-md-6 col-12 centr '>
-      
-      <Card style={{ width: '18rem' , height:'20rem', border: '2px solid #fff'}} className='cardreview'data-aos="fade-right" data-aos-duration="1000">
-     <Card.Img  className="text-center img2" variant="top" src={review6} style={{height:'5rem',width:'5rem',borderRadius:'50%',marginLeft:'100px'}} /> <br />
-  
-       <Card.Title className='tit'  >MUKESH S</Card.Title>
-       <Card.Text className='te text-center'>
-       Tyson Photography Studio exceeded all expectations—every shot was pure perfection!
-       Superb quality, best service, and an excellent eye for detail—highly recommended!</Card.Text>
-       
-    
-   </Card>
-     </div>
-     <div className='col-lg-4 col-md-6 col-12 centr '>
-      
-      <Card style={{ width: '18rem' , height:'20rem', border: '2px solid #fff'}} className='cardreview'data-aos="fade-left" data-aos-duration="1000">
-     <Card.Img  className="text-center img2" variant="top" src={review7} style={{height:'5rem',width:'5rem',borderRadius:'50%',marginLeft:'100px'}} /> <br />
-  
-       <Card.Title className='tit'  >SANJAY V</Card.Title>
-       <Card.Text className='te text-center'>
-       Tyson Photography Studio delivers stunning photos with top-notch professionalism!
-       Truly the best—superb work, excellent service, and unforgettable results!</Card.Text>
-       
-    
-   </Card>
-     </div>
-     <div className='col-lg-4 col-md-6 col-12 centr '>
-      
-      <Card style={{ width: '18rem' , height:'20rem', border: '2px solid #fff'}} className='cardreview'data-aos="fade-right" data-aos-duration="1000">
-     <Card.Img  className="text-center img2" variant="top" src={review8} style={{height:'5rem',width:'5rem',borderRadius:'50%',marginLeft:'100px'}} /> <br />
-  
-       <Card.Title className='tit'  >IMMANUVEL A</Card.Title>
-       <Card.Text className='te text-center'>
-       Tyson Photography Studio delivers exceptional quality and captures every moment with stunning precision.
-        Truly the best—super professional, creative, and highly recommended!</Card.Text>
-       
-    
-   </Card>
-     </div>
-     <div className='col-lg-4 col-md-6 col-12 centr '>
-      
-      <Card style={{ width: '18rem' , height:'20rem', border: '2px solid #fff'}} className='cardreview'data-aos="fade-left" data-aos-duration="1000">
-     <Card.Img  className="text-center img2" variant="top" src={review9} style={{height:'5rem',width:'5rem',borderRadius:'50%',marginLeft:'100px'}} /> <br />
-  
-       <Card.Title className='tit'  >NATASHA S</Card.Title>
-       <Card.Text className='te text-center'>
-       Tyson Photography Studio is truly a gem,
-       Capturing moments like a perfect film.
-       Their work is flawless, sharp, and bright,
-       Turning memories into pure delight.</Card.Text>
-       
-    
-   </Card>
-     </div>
-     <div className='col-lg-4 col-md-6 col-12 centr '>
-      
-      <Card style={{ width: '18rem' , height:'20rem', border: '2px solid #fff'}} className='cardreview'data-aos="fade-right" data-aos-duration="1000">
-     <Card.Img  className="text-center img2" variant="top" src={review10} style={{height:'5rem',width:'5rem',borderRadius:'50%',marginLeft:'100px'}} /> <br />
-  
-       <Card.Title className='tit'  >JENIFER D</Card.Title>
-       <Card.Text className='te text-center'>
-       From the first click to the final frame,
-       Their passion for perfection stays the same.
-       Friendly, skilled, and full of art,
-       Tyson’s team wins every heart.</Card.Text>
-       
-    
-   </Card>
-     </div>
-     <div className='col-lg-4 col-md-6 col-12 centr '>
-      
-      <Card style={{ width: '18rem' , height:'20rem', border: '2px solid #fff'}} className='cardreview'data-aos="fade-left" data-aos-duration="1000">
-     <Card.Img  className="text-center img2" variant="top" src={review11} style={{height:'5rem',width:'5rem',borderRadius:'50%',marginLeft:'100px'}} /> <br />
-  
-       <Card.Title className='tit'  >ISWARYA K</Card.Title>
-       <Card.Text className='te text-center'>
-       Stunning edits and angles so right,
-       They make every moment shine bright.
-       Superb service, calm and clear,
-       Best studio you’ll ever go near.</Card.Text>
-       
-    
-   </Card>
-     </div>
-     <div className='col-lg-4 col-md-6 col-12 centr '>
-      
-      <Card style={{ width: '18rem' , height:'20rem', border: '2px solid #fff'}} className='cardreview'data-aos="fade-right" data-aos-duration="1000">
-     <Card.Img  className="text-center img2" variant="top" src={review12} style={{height:'5rem',width:'5rem',borderRadius:'50%',marginLeft:'100px'}} /> <br />
-  
-       <Card.Title className='tit'  >KHALIFA M</Card.Title>
-       <Card.Text className='te text-center'>
-       Every photo tells a beautiful story,
-          Wrapped in love, detail, and glory.
-          Professional, kind, and super creative,
-          They make each session unforgettable and native.</Card.Text>
-       
-    
-   </Card>
-     </div>
-     <div className='col-lg-4 col-md-6 col-12 centr '>
-      
-      <Card style={{ width: '18rem' , height:'20rem', border: '2px solid #fff'}} className='cardreview'data-aos="fade-left" data-aos-duration="1000">
-     <Card.Img  className="text-center img2" variant="top" src={review13} style={{height:'5rem',width:'5rem',borderRadius:'50%',marginLeft:'100px'}} /> <br />
-  
-       <Card.Title className='tit'  >SAMANTHA A</Card.Title>
-       <Card.Text className='te text-center'>
-        A dream to work with from start to end,
-        They treat each client like a dear friend.
-         Tyson's team is the absolute best,
-         Put their skills to the ultimate test!</Card.Text>
-       
-    
-   </Card>
-     </div>
-     <div className='col-lg-4 col-md-6 col-12 centr '>
-      
-      <Card style={{ width: '18rem' , height:'20rem', border: '2px solid #fff'}} className='cardreview'data-aos="fade-right" data-aos-duration="1000">
-     <Card.Img  className="text-center img2" variant="top" src={review14} style={{height:'5rem',width:'5rem',borderRadius:'50%',marginLeft:'100px'}} /> <br />
-  
-       <Card.Title className='tit'  >KAYADU LOHAR M</Card.Title>
-       <Card.Text className='te text-center'>
-       Perfect lighting, perfect pose, 
-        They truly know how the magic flows.
-       Elegant shots, full of grace,
-        Tyson Photography owns the space.</Card.Text>
-       
-    
-   </Card>
-     </div>
-     <div className='col-lg-4 col-md-6 col-12 centr '>
-      
-      <Card style={{ width: '18rem' , height:'20rem', border: '2px solid #fff'}} className='cardreview'data-aos="fade-left" data-aos-duration="1000">
-     <Card.Img  className="text-center img2" variant="top" src={review15} style={{height:'5rem',width:'5rem',borderRadius:'50%',marginLeft:'100px'}} /> <br />
-  
-       <Card.Title className='tit'  >THEANMOZHI G</Card.Title>
-       <Card.Text className='te text-center'>
-       With every snap, they capture soul,
-         Turning moments into a timeless scroll.
-         Superb quality in every frame,
-          Their work puts others to shame.</Card.Text>
-       
-    
-   </Card>
-     </div>
-     <div className='col-lg-4 col-md-6 col-12 centr '>
-      
-      <Card style={{ width: '18rem' , height:'20rem', border: '2px solid #fff'}} className='cardreview'data-aos="fade-right" data-aos-duration="1000">
-     <Card.Img  className="text-center img2" variant="top" src={review16} style={{height:'5rem',width:'5rem',borderRadius:'50%',marginLeft:'100px'}} /> <br />
-  
-       <Card.Title className='tit'  >KANIMOZHI V</Card.Title>
-       <Card.Text className='te text-center'>
-       Tyson's crew is pro and kind,With creative genius that’s hard to find.Every shoot is full of fun,
-         The results? Just second to none</Card.Text>
-       
-    
-   </Card>
-     </div>
-     <div className='col-lg-4 col-md-6 col-12 centr '>
-      
-      <Card style={{ width: '18rem' , height:'20rem', border: '2px solid #fff'}} className='cardreview'data-aos="fade-left" data-aos-duration="1000">
-     <Card.Img  className="text-center img2" variant="top" src={review17} style={{height:'5rem',width:'5rem',borderRadius:'50%',marginLeft:'100px'}} /> <br />
-  
-       <Card.Title className='tit'  >ALEXABLIS S</Card.Title>
-       <Card.Text className='te text-center'>
-       From portraits to events so grand,They take the lead with a steady hand.A studio where art and passion meet,
-        Their final shots are pure and sweet.</Card.Text>
-       
-    
-   </Card>
-     </div>
-     <div className='col-lg-4 col-md-6 col-12 centr '>
-      
-      <Card style={{ width: '18rem' , height:'20rem', border: '2px solid #fff'}} className='cardreview'data-aos="fade-right" data-aos-duration="1000">
-     <Card.Img  className="text-center img2" variant="top" src={review18} style={{height:'5rem',width:'5rem',borderRadius:'50%',marginLeft:'100px'}} /> <br />
-  
-       <Card.Title className='tit'  >CALADHARAN O</Card.Title>
-       <Card.Text className='te text-center'>
-       On time, on point, with perfect flair,They bring your vision into the air.Top-class photos that stand apart,
-       A team that works with all their heart.</Card.Text>
-       
-    
-   </Card>
-     </div>
-     <div className='col-lg-4 col-md-6 col-12 centr '>
-      
-      <Card style={{ width: '18rem' , height:'20rem', border: '2px solid #fff'}} className='cardreview'data-aos="fade-left" data-aos-duration="1000">
-     <Card.Img  className="text-center img2" variant="top" src={review19} style={{height:'5rem',width:'5rem',borderRadius:'50%',marginLeft:'100px'}} /> <br />
-  
-       <Card.Title className='tit'  >PREMJI K</Card.Title>
-       <Card.Text className='te text-center'>
-       Tyson Studio never fails to impress,
-       Each photo is art, nothing less.
-       They bring emotion to every frame,
-       Their reputation earns them lasting fame.</Card.Text>
-       
-    
-   </Card>
-     </div>
-     <div className='col-lg-4 col-md-6 col-12 centr '>
-      
-      <Card style={{ width: '18rem' , height:'20rem', border: '2px solid #fff'}} className='cardreview'  data-aos="fade-right" data-aos-duration="1000">
-     <Card.Img  className="text-center img2" variant="top" src={review20} style={{height:'5rem',width:'5rem',borderRadius:'50%',marginLeft:'100px'}} /> <br />
-  
-       <Card.Title className='tit'  >AJITH P</Card.Title>
-       <Card.Text className='te text-center'>
-       Kind and calm with expert eyes,
-       They catch the moments money can't buy.
-       Each picture feels so rich and true,
-       They truly know what they do.</Card.Text>
-       
-    
-   </Card>
-     </div>
-     <div className='col-lg-4 col-md-6 col-12 centr '>
-      
-      <Card style={{ width: '18rem' , height:'20rem', border: '2px solid #fff'}} className='cardreview'data-aos="fade-left" data-aos-duration="1000">
-     <Card.Img  className="text-center img2" variant="top" src={review21} style={{height:'5rem',width:'5rem',borderRadius:'50%',marginLeft:'100px'}} /> <br />
-  
-       <Card.Title className='tit'  >AMBANI S</Card.Title>
-       <Card.Text className='te text-center'>
-       Professional vibes and friendly tone,
-       You'll never feel lost or alone.
-       With skill and heart, they guide your way,
-       And leave you smiling all the day.</Card.Text>
-       
-    
-   </Card>
-     </div>
-
-
-
-        </div>
-
-
-          <div className="row">
-                           
-                                 <div className="col-lg-12 col-md-12 col-12 wedfooter" data-aos="fade-up" data-aos-duration="1000">
-                                  <h1 className="text-center wedfosp wedfo"><span>TYSON</span> STUDIO</h1>
-                                  <h5 className="text-center foh5">Stay Connected With Our Photographers</h5><br/>
-                                  <p className="wedhed text-center">Ldrago has made Professional Photograpy service easy to <br/>  access.  Doesn't matter if you want 
-                                                multiple shoots at a time or <br/> multiple locations at a time. We're Present across 135 international <br/> destinations with multiple teams at every location.
-                                  </p>
-                                  <h5 className="text-center wedsech5">Follow Us</h5>
-                                  <h4 className="text-center wedico"><a href="https://www.facebook.com/mesiya.mesiya.927?mibextid=ZbWKwL"><FontAwesomeIcon icon={faFacebook} style={{color:'#fa0505'}} /></a>&nbsp;&nbsp;&nbsp;
-                                           <a href="https://www.instagram.com/dark_shadow_boy_05/profilecard/?igsh=dGpidjVvcHkyYzFh"><FontAwesomeIcon icon={faInstagram} style={{color:'#fa0505'}} /></a>&nbsp;&nbsp;&nbsp;
-                                           <a href="mailto:mesiya2002samy@gmail.com" ><FontAwesomeIcon icon={faEnvelope} style={{color:'#fa0505'}} /></a>&nbsp;&nbsp;&nbsp;
-                                           <a href="http://wa.me/+919361726533"><FontAwesomeIcon icon={faWhatsapp} style={{color:'#fa0505'}} /></a>&nbsp;&nbsp;&nbsp;
-                                           <a href="https://mesiya-portfolio.netlify.app/"><FontAwesomeIcon icon={faLink} style={{color:'#fa0505'}} /></a></h4><br/>
-                                           <h6  className="text-center fosp wedcopy">Copyright © 2025 <span>TYSON</span> STUDIO | All rights reserved !</h6>
-                                 </div>
-                           
-          </div>
-
+    <div className="reviews-page">
+      {/* Hero Banner */}
+      <section className="service-hero-banner">
+        <div className="container">
+          <span className="label" data-aos="fade-down">TESTIMONIALS</span>
+          <h1 className="service-hero-title" data-aos="fade-up">
+            CLIENT EXPERIENCES <span className="text-accent">.</span>
+          </h1>
+          <p className="service-hero-sub" data-aos="fade-up" data-aos-delay="100">
+            Read what our couples, families, and creative partners say about their journeys with TYSON STUDIO.
+          </p>
         </div>
       </section>
-    </>
-  )
-}
 
-export default Review
+      {/* Reviews Grid */}
+      <section className="reviews-main-section">
+        <div className="container">
+          <div className="reviews-editorial-grid">
+            {reviews.map((item, idx) => (
+              <div
+                key={item.id}
+                className="review-luxury-card"
+                data-aos="fade-up"
+                data-aos-delay={(idx % 3) * 100}
+              >
+                {/* Rating stars */}
+                <div className="review-stars-wrap">
+                  <span className="review-star">★</span>
+                  <span className="review-star">★</span>
+                  <span className="review-star">★</span>
+                  <span className="review-star">★</span>
+                  <span className="review-star">★</span>
+                </div>
+
+                {/* Quote */}
+                <p className="review-quote-text">
+                  "{item.text}"
+                </p>
+
+                {/* Author Info */}
+                <div className="review-author-wrap">
+                  <div className="review-avatar-frame">
+                    <img src={item.img} alt={item.name} className="review-avatar-img" />
+                  </div>
+                  <div className="review-author-info">
+                    <h3 className="review-author-name">{item.name}</h3>
+                    <span className="review-author-role">{item.role}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <Footer />
+    </div>
+  );
+};
+
+export default Review;
